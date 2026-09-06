@@ -1,0 +1,32 @@
+{
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "game_ext.h": "c",
+        "game_sdl.h": "c",
+        "stdbool.h": "c",
+        "game_aux.h": "c",
+        "game_struct.h": "c"
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "googletest.failed",
+                "settings": {
+                    "foreground": "#f00"
+                }
+            },
+            {
+                "scope": "googletest.passed",
+                "settings": {
+                    "foreground": "#0f0"
+                }
+            },
+            {
+                "scope": "googletest.run",
+                "settings": {
+                    "foreground": "#0f0"
+                }
+            }
+        ]
+    }
+}

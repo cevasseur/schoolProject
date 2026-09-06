@@ -1,0 +1,451 @@
+\hypertarget{TunnelNetwork_8h}{}\doxysection{include/\+Tunnel\+Routing/\+Tunnel\+Network.h File Reference}
+\label{TunnelNetwork_8h}\index{include/TunnelRouting/TunnelNetwork.h@{include/TunnelRouting/TunnelNetwork.h}}
+
+
+Structure to represent a network with IPV4-\/\+IPV6 links.  
+
+
+{\ttfamily \#include \char`\"{}Graph.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtn__step}{tn\+\_\+step}}
+\begin{DoxyCompactList}\small\item\em Structure to store a step of an execution path over a tunnel network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{TunnelNetwork_8h_a5b8979c5ac2daede8a0ffc6e10545fa1}\label{TunnelNetwork_8h_a5b8979c5ac2daede8a0ffc6e10545fa1}} 
+\#define {\bfseries Num\+Actions}~10
+\begin{DoxyCompactList}\small\item\em Number of stack actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}\label{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}} 
+typedef struct Tunnel\+Network\+\_\+s $\ast$ {\bfseries Tunnel\+Network}
+\begin{DoxyCompactList}\small\item\em The struct containing the network (an oriented graph, whose nodes can perform stack action, with initial and final nodes of the problem). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{TunnelNetwork_8h_a34c90d64e4db5b68b4028f2634d1f336}\label{TunnelNetwork_8h_a34c90d64e4db5b68b4028f2634d1f336}} 
+typedef struct \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} {\bfseries tn\+\_\+step}
+\begin{DoxyCompactList}\small\item\em Structure to store a step of an execution path over a tunnel network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}\label{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}} 
+enum \mbox{\hyperlink{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}{stack\+\_\+action}} \{ \newline
+{\bfseries transmit\+\_\+4}
+, {\bfseries transmit\+\_\+6}
+, {\bfseries push\+\_\+4\+\_\+4}
+, {\bfseries push\+\_\+4\+\_\+6}
+, \newline
+{\bfseries push\+\_\+6\+\_\+4}
+, {\bfseries push\+\_\+6\+\_\+6}
+, {\bfseries pop\+\_\+4\+\_\+4}
+, {\bfseries pop\+\_\+4\+\_\+6}
+, \newline
+{\bfseries pop\+\_\+6\+\_\+4}
+, {\bfseries pop\+\_\+6\+\_\+6}
+ \}
+\begin{DoxyCompactList}\small\item\em Possible actions that a node can perform on a package. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} \mbox{\hyperlink{TunnelNetwork_8h_a128db3a3dfd4081dbf5259baac3a4694}{tn\+\_\+initialize}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Initializes a Tunnel Network from a \mbox{\hyperlink{structGraph}{Graph}} for use in the project. Parses node parameters to determine which are initial, final, and their actions. The graph is NOT copied (it is not supposed to be modified). TODO\+: format of parsed parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelNetwork_8h_a7528613a5924baf9d2ad2614cd5e8ba1}{tn\+\_\+delete}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network)
+\begin{DoxyCompactList}\small\item\em Deallocates memory used by {\ttfamily network}. Does NOT deallocates the graph. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{TunnelNetwork_8h_a8cbdcf65aff22bbf1bd96fbbaf78d038}{tn\+\_\+string\+\_\+of\+\_\+stack\+\_\+action}} (\mbox{\hyperlink{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}{stack\+\_\+action}} action)
+\begin{DoxyCompactList}\small\item\em Gets the textual representation of {\ttfamily action}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelNetwork_8h_a27fe6c118f7f9aa3ecd733f25e91b13e}{tn\+\_\+print}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network)
+\begin{DoxyCompactList}\small\item\em Printer function to display information about {\ttfamily network}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{TunnelNetwork_8h_a09e24801ae25e328f2417aa9b3501023}{tn\+\_\+get\+\_\+num\+\_\+nodes}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network)
+\begin{DoxyCompactList}\small\item\em Returns the number of nodes of {\ttfamily network}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{TunnelNetwork_8h_a148610109fa1f861801d500b4ace4712}{tn\+\_\+get\+\_\+num\+\_\+edges}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network)
+\begin{DoxyCompactList}\small\item\em Returns the number of edges of {\ttfamily network}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{TunnelNetwork_8h_a998a62da9922e56f7f1fbc54339640a2}{tn\+\_\+is\+\_\+edge}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int source, int target)
+\begin{DoxyCompactList}\small\item\em Returns true if ({\ttfamily source}, {\ttfamily target}) is an edge in {\ttfamily network}. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{TunnelNetwork_8h_a43585f28cda5edcf73fd7a2a19bca620}{tn\+\_\+get\+\_\+node\+\_\+name}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int node)
+\begin{DoxyCompactList}\small\item\em Returns the name of {\ttfamily node} in {\ttfamily network}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{TunnelNetwork_8h_abc36117be786740c10271622cd0ec8d5}{tn\+\_\+node\+\_\+has\+\_\+action}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int node, \mbox{\hyperlink{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}{stack\+\_\+action}} action)
+\begin{DoxyCompactList}\small\item\em Returns true iff the node {\ttfamily node} can perform action {\ttfamily action}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{TunnelNetwork_8h_a272070ea510ea0025a06e6b4fd186377}{tn\+\_\+get\+\_\+initial}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network)
+\begin{DoxyCompactList}\small\item\em Gets the initial node of {\ttfamily network}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelNetwork_8h_a99755fc6810cf62acdf08c9e86f59e6e}{tn\+\_\+set\+\_\+initial}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int initial)
+\begin{DoxyCompactList}\small\item\em Set the initial node of {\ttfamily network} as {\ttfamily initial}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{TunnelNetwork_8h_aab8c9e45b96a8838bc9a496d6f498a9c}{tn\+\_\+get\+\_\+final}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network)
+\begin{DoxyCompactList}\small\item\em Gets the final node of {\ttfamily network}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelNetwork_8h_a441131f5cf62d98b6d14adb65745530a}{tn\+\_\+set\+\_\+final}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int final)
+\begin{DoxyCompactList}\small\item\em Sets the final node of {\ttfamily network} as {\ttfamily final}. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{TunnelNetwork_8h_aa961e59dbac95328a802ff5d831af5ad}{tn\+\_\+get\+\_\+name}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network)
+\begin{DoxyCompactList}\small\item\em Gets the name of the network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelNetwork_8h_a8f33f14e00ae9ba58dc1c1684bfb715f}{tn\+\_\+print\+\_\+path}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$path, int size\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Prints the path {\ttfamily path}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelNetwork_8h_a3c60875f23f7e92cf51a265a58a28c1d}{tn\+\_\+create\+\_\+dot}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$path, int size\+\_\+path, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Generates a dot file representing the path described by {\ttfamily path} (in red) over network {\ttfamily network}. The file will have name \texorpdfstring{$<$}{<}{\ttfamily name\texorpdfstring{$>$}{>}}.dot. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} \mbox{\hyperlink{TunnelNetwork_8h_a6fa837a4fef75a57826ec025aeb378ec}{tn\+\_\+step\+\_\+create}} (\mbox{\hyperlink{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}{stack\+\_\+action}} action, int source, int target)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} with values given in argument. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} \mbox{\hyperlink{TunnelNetwork_8h_a6f2d2fbfbcdccbc2d19857d31bd317fa}{tn\+\_\+step\+\_\+empty}} ()
+\begin{DoxyCompactList}\small\item\em Creates a dummy step. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to represent a network with IPV4-\/\+IPV6 links. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle (\href{mailto:vincent.penelle@u-bordeaux.fr}{\texttt{ vincent.\+penelle@u-\/bordeaux.\+fr}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/10-\/02
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TunnelNetwork_8h_a3c60875f23f7e92cf51a265a58a28c1d}\label{TunnelNetwork_8h_a3c60875f23f7e92cf51a265a58a28c1d}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_create\_dot@{tn\_create\_dot}}
+\index{tn\_create\_dot@{tn\_create\_dot}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_create\_dot()}{tn\_create\_dot()}}
+{\footnotesize\ttfamily void tn\+\_\+create\+\_\+dot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$}]{path,  }\item[{int}]{size\+\_\+path,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Generates a dot file representing the path described by {\ttfamily path} (in red) over network {\ttfamily network}. The file will have name \texorpdfstring{$<$}{<}{\ttfamily name\texorpdfstring{$>$}{>}}.dot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em path} & \\
+\hline
+{\em size\+\_\+path} & \\
+\hline
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{TunnelNetwork_8h_a7528613a5924baf9d2ad2614cd5e8ba1}\label{TunnelNetwork_8h_a7528613a5924baf9d2ad2614cd5e8ba1}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_delete@{tn\_delete}}
+\index{tn\_delete@{tn\_delete}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_delete()}{tn\_delete()}}
+{\footnotesize\ttfamily void tn\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network }\end{DoxyParamCaption})}
+
+
+
+Deallocates memory used by {\ttfamily network}. Does NOT deallocates the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{TunnelNetwork_8h_aab8c9e45b96a8838bc9a496d6f498a9c}\label{TunnelNetwork_8h_aab8c9e45b96a8838bc9a496d6f498a9c}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_get\_final@{tn\_get\_final}}
+\index{tn\_get\_final@{tn\_get\_final}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_get\_final()}{tn\_get\_final()}}
+{\footnotesize\ttfamily int tn\+\_\+get\+\_\+final (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network }\end{DoxyParamCaption})}
+
+
+
+Gets the final node of {\ttfamily network}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a272070ea510ea0025a06e6b4fd186377}\label{TunnelNetwork_8h_a272070ea510ea0025a06e6b4fd186377}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_get\_initial@{tn\_get\_initial}}
+\index{tn\_get\_initial@{tn\_get\_initial}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_get\_initial()}{tn\_get\_initial()}}
+{\footnotesize\ttfamily int tn\+\_\+get\+\_\+initial (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network }\end{DoxyParamCaption})}
+
+
+
+Gets the initial node of {\ttfamily network}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_aa961e59dbac95328a802ff5d831af5ad}\label{TunnelNetwork_8h_aa961e59dbac95328a802ff5d831af5ad}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_get\_name@{tn\_get\_name}}
+\index{tn\_get\_name@{tn\_get\_name}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_get\_name()}{tn\_get\_name()}}
+{\footnotesize\ttfamily char $\ast$ tn\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network }\end{DoxyParamCaption})}
+
+
+
+Gets the name of the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a43585f28cda5edcf73fd7a2a19bca620}\label{TunnelNetwork_8h_a43585f28cda5edcf73fd7a2a19bca620}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_get\_node\_name@{tn\_get\_node\_name}}
+\index{tn\_get\_node\_name@{tn\_get\_node\_name}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_get\_node\_name()}{tn\_get\_node\_name()}}
+{\footnotesize\ttfamily char $\ast$ tn\+\_\+get\+\_\+node\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{node }\end{DoxyParamCaption})}
+
+
+
+Returns the name of {\ttfamily node} in {\ttfamily network}. 
+
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily node} must be between 0 and tn\+\_\+get\+\_\+num\+\_\+nodes({\ttfamily network}) 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em node} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a148610109fa1f861801d500b4ace4712}\label{TunnelNetwork_8h_a148610109fa1f861801d500b4ace4712}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_get\_num\_edges@{tn\_get\_num\_edges}}
+\index{tn\_get\_num\_edges@{tn\_get\_num\_edges}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_get\_num\_edges()}{tn\_get\_num\_edges()}}
+{\footnotesize\ttfamily int tn\+\_\+get\+\_\+num\+\_\+edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network }\end{DoxyParamCaption})}
+
+
+
+Returns the number of edges of {\ttfamily network}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a09e24801ae25e328f2417aa9b3501023}\label{TunnelNetwork_8h_a09e24801ae25e328f2417aa9b3501023}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_get\_num\_nodes@{tn\_get\_num\_nodes}}
+\index{tn\_get\_num\_nodes@{tn\_get\_num\_nodes}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_get\_num\_nodes()}{tn\_get\_num\_nodes()}}
+{\footnotesize\ttfamily int tn\+\_\+get\+\_\+num\+\_\+nodes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network }\end{DoxyParamCaption})}
+
+
+
+Returns the number of nodes of {\ttfamily network}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a128db3a3dfd4081dbf5259baac3a4694}\label{TunnelNetwork_8h_a128db3a3dfd4081dbf5259baac3a4694}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_initialize@{tn\_initialize}}
+\index{tn\_initialize@{tn\_initialize}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_initialize()}{tn\_initialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} tn\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Initializes a Tunnel Network from a \mbox{\hyperlink{structGraph}{Graph}} for use in the project. Parses node parameters to determine which are initial, final, and their actions. The graph is NOT copied (it is not supposed to be modified). TODO\+: format of parsed parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The \mbox{\hyperlink{structGraph}{Graph}} that is the input of the problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tunnel\+Network The structure Tunnel\+Network described above. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a998a62da9922e56f7f1fbc54339640a2}\label{TunnelNetwork_8h_a998a62da9922e56f7f1fbc54339640a2}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_is\_edge@{tn\_is\_edge}}
+\index{tn\_is\_edge@{tn\_is\_edge}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_is\_edge()}{tn\_is\_edge()}}
+{\footnotesize\ttfamily bool tn\+\_\+is\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{source,  }\item[{int}]{target }\end{DoxyParamCaption})}
+
+
+
+Returns true if ({\ttfamily source}, {\ttfamily target}) is an edge in {\ttfamily network}. 
+
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily source} and {\ttfamily target} must be between 0 and tn\+\_\+get\+\_\+num\+\_\+nodes({\ttfamily network}). 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em source} & \\
+\hline
+{\em target} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_abc36117be786740c10271622cd0ec8d5}\label{TunnelNetwork_8h_abc36117be786740c10271622cd0ec8d5}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_node\_has\_action@{tn\_node\_has\_action}}
+\index{tn\_node\_has\_action@{tn\_node\_has\_action}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_node\_has\_action()}{tn\_node\_has\_action()}}
+{\footnotesize\ttfamily bool tn\+\_\+node\+\_\+has\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{node,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}{stack\+\_\+action}}}]{action }\end{DoxyParamCaption})}
+
+
+
+Returns true iff the node {\ttfamily node} can perform action {\ttfamily action}. 
+
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily node} must be between 0 and tn\+\_\+get\+\_\+num\+\_\+nodes({\ttfamily network})-\/1. 
+
+{\ttfamily action} must be a valid action. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em node} & \\
+\hline
+{\em action} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a27fe6c118f7f9aa3ecd733f25e91b13e}\label{TunnelNetwork_8h_a27fe6c118f7f9aa3ecd733f25e91b13e}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_print@{tn\_print}}
+\index{tn\_print@{tn\_print}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_print()}{tn\_print()}}
+{\footnotesize\ttfamily void tn\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network }\end{DoxyParamCaption})}
+
+
+
+Printer function to display information about {\ttfamily network}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{TunnelNetwork_8h_a8f33f14e00ae9ba58dc1c1684bfb715f}\label{TunnelNetwork_8h_a8f33f14e00ae9ba58dc1c1684bfb715f}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_print\_path@{tn\_print\_path}}
+\index{tn\_print\_path@{tn\_print\_path}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_print\_path()}{tn\_print\_path()}}
+{\footnotesize\ttfamily void tn\+\_\+print\+\_\+path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$}]{path,  }\item[{int}]{size\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Prints the path {\ttfamily path}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em path} & \\
+\hline
+{\em size\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{TunnelNetwork_8h_a441131f5cf62d98b6d14adb65745530a}\label{TunnelNetwork_8h_a441131f5cf62d98b6d14adb65745530a}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_set\_final@{tn\_set\_final}}
+\index{tn\_set\_final@{tn\_set\_final}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_set\_final()}{tn\_set\_final()}}
+{\footnotesize\ttfamily void tn\+\_\+set\+\_\+final (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{final }\end{DoxyParamCaption})}
+
+
+
+Sets the final node of {\ttfamily network} as {\ttfamily final}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em final} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily final} must be between 0 and tn\+\_\+get\+\_\+num\+\_\+nodes({\ttfamily network})-\/1. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelNetwork_8h_a99755fc6810cf62acdf08c9e86f59e6e}\label{TunnelNetwork_8h_a99755fc6810cf62acdf08c9e86f59e6e}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_set\_initial@{tn\_set\_initial}}
+\index{tn\_set\_initial@{tn\_set\_initial}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_set\_initial()}{tn\_set\_initial()}}
+{\footnotesize\ttfamily void tn\+\_\+set\+\_\+initial (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{initial }\end{DoxyParamCaption})}
+
+
+
+Set the initial node of {\ttfamily network} as {\ttfamily initial}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em initial} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily initial} must be between 0 and tn\+\_\+get\+\_\+num\+\_\+nodes({\ttfamily network})-\/1. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelNetwork_8h_a6fa837a4fef75a57826ec025aeb378ec}\label{TunnelNetwork_8h_a6fa837a4fef75a57826ec025aeb378ec}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_step\_create@{tn\_step\_create}}
+\index{tn\_step\_create@{tn\_step\_create}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_step\_create()}{tn\_step\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} tn\+\_\+step\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}{stack\+\_\+action}}}]{action,  }\item[{int}]{source,  }\item[{int}]{target }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} with values given in argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & \\
+\hline
+{\em source} & \\
+\hline
+{\em target} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a6f2d2fbfbcdccbc2d19857d31bd317fa}\label{TunnelNetwork_8h_a6f2d2fbfbcdccbc2d19857d31bd317fa}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_step\_empty@{tn\_step\_empty}}
+\index{tn\_step\_empty@{tn\_step\_empty}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_step\_empty()}{tn\_step\_empty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} tn\+\_\+step\+\_\+empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a dummy step. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{TunnelNetwork_8h_a8cbdcf65aff22bbf1bd96fbbaf78d038}\label{TunnelNetwork_8h_a8cbdcf65aff22bbf1bd96fbbaf78d038}} 
+\index{TunnelNetwork.h@{TunnelNetwork.h}!tn\_string\_of\_stack\_action@{tn\_string\_of\_stack\_action}}
+\index{tn\_string\_of\_stack\_action@{tn\_string\_of\_stack\_action}!TunnelNetwork.h@{TunnelNetwork.h}}
+\doxysubsubsection{\texorpdfstring{tn\_string\_of\_stack\_action()}{tn\_string\_of\_stack\_action()}}
+{\footnotesize\ttfamily char $\ast$ tn\+\_\+string\+\_\+of\+\_\+stack\+\_\+action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a1af544f6e9352b7fc4b05013ed85d637}{stack\+\_\+action}}}]{action }\end{DoxyParamCaption})}
+
+
+
+Gets the textual representation of {\ttfamily action}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & \\
+\hline
+\end{DoxyParams}

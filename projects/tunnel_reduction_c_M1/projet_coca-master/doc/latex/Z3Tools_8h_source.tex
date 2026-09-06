@@ -1,0 +1,30 @@
+\hypertarget{Z3Tools_8h_source}{}\doxysection{Z3\+Tools.\+h}
+\label{Z3Tools_8h_source}\index{include/main/Z3Tools.h@{include/main/Z3Tools.h}}
+\mbox{\hyperlink{Z3Tools_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#ifndef COCA\_Z3TOOLS\_H\_}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define COCA\_Z3TOOLS\_H\_}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <z3.h>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{25 Z3\_context \mbox{\hyperlink{Z3Tools_8h_aaf063ddf7bfa7986a50b98591519c440}{make\_context}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{35 Z3\_ast \mbox{\hyperlink{Z3Tools_8h_a397d6e03e2538ff0df36aad6e02030ae}{mk\_bool\_var}}(Z3\_context ctx, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *name);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{45 Z3\_ast \mbox{\hyperlink{Z3Tools_8h_a59777aad6108658c0d6ae97d7f779b0f}{at\_most\_formula}}(Z3\_context ctx, Z3\_ast *formulae, \textcolor{keywordtype}{int} size);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{55 Z3\_ast \mbox{\hyperlink{Z3Tools_8h_a9ae87e2debe9a43dd02485cbc1592ac0}{uniqueFormula}}(Z3\_context ctx, Z3\_ast *formulae, \textcolor{keywordtype}{int} size);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{65 Z3\_lbool \mbox{\hyperlink{Z3Tools_8h_a9e8e16c2de950d843c7176525f2f9c2f}{is\_formula\_sat}}(Z3\_context ctx, Z3\_ast formula);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{74 Z3\_model \mbox{\hyperlink{Z3Tools_8h_a22198d664538618eafa0529472dc0403}{get\_model\_from\_sat\_formula}}(Z3\_context ctx, Z3\_ast formula);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{84 Z3\_lbool \mbox{\hyperlink{Z3Tools_8h_a1075cfdda6682c0f8d3a93e6db931e11}{solve\_formula}}(Z3\_context ctx, Z3\_ast formula, Z3\_model *model);}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{96 \textcolor{keywordtype}{bool} \mbox{\hyperlink{Z3Tools_8h_a6772a975ca06457741fa1b6a82b34613}{value\_of\_var\_in\_model}}(Z3\_context ctx, Z3\_model model, Z3\_ast variable);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

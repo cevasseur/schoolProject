@@ -1,0 +1,63 @@
+\hypertarget{TunnelBF_8h}{}\doxysection{include/\+Tunnel\+Routing/\+Tunnel\+BF.h File Reference}
+\label{TunnelBF_8h}\index{include/TunnelRouting/TunnelBF.h@{include/TunnelRouting/TunnelBF.h}}
+
+
+File to implement a brute force algorithm for the Tunnel Network Routing problem.  
+
+
+{\ttfamily \#include \char`\"{}Tunnel\+Network.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{TunnelBF_8h_ae1d78e54248f2c3b6f39d237b1e09e7c}{tn\+\_\+brute\+\_\+force}} (\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int length, \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$path)
+\begin{DoxyCompactList}\small\item\em Brute force that decides if there is a valid simple path of length at most {\ttfamily length} in {\ttfamily network}. If there is such a path, it will be present in {\ttfamily path} after the call, otherwise, path is not modified. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File to implement a brute force algorithm for the Tunnel Network Routing problem. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/10-\/16
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TunnelBF_8h_ae1d78e54248f2c3b6f39d237b1e09e7c}\label{TunnelBF_8h_ae1d78e54248f2c3b6f39d237b1e09e7c}} 
+\index{TunnelBF.h@{TunnelBF.h}!tn\_brute\_force@{tn\_brute\_force}}
+\index{tn\_brute\_force@{tn\_brute\_force}!TunnelBF.h@{TunnelBF.h}}
+\doxysubsubsection{\texorpdfstring{tn\_brute\_force()}{tn\_brute\_force()}}
+{\footnotesize\ttfamily int tn\+\_\+brute\+\_\+force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{length,  }\item[{\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Brute force that decides if there is a valid simple path of length at most {\ttfamily length} in {\ttfamily network}. If there is such a path, it will be present in {\ttfamily path} after the call, otherwise, path is not modified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & The network. \\
+\hline
+{\em length} & The max length of the path sought \\
+\hline
+{\em path} & Array to return a path if one is found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The length of the path found. Returns 0 if no path has been found. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily path} must be an array of size at least {\ttfamily length}. 
+
+{\ttfamily network} must be an initialized Tunnel\+Network. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+{\ttfamily path} contains the path found from cell 0 to returned value -\/1. 
+\end{DoxyPostcond}

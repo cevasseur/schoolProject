@@ -1,0 +1,400 @@
+\hypertarget{Graph_8h}{}\doxysection{include/main/\+Graph.h File Reference}
+\label{Graph_8h}\index{include/main/Graph.h@{include/main/Graph.h}}
+
+
+Structure to store a graph statically, and to access to its informations easily. Includes source and target node informations, and colors.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtag__paramList}{tag\+\_\+param\+List}}
+\begin{DoxyCompactList}\small\item\em List of arbitrary parameters. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structGraph}{Graph}}
+\begin{DoxyCompactList}\small\item\em \+: the graph type. The first four fields are needed to represent a directed graph. The rest depends on needs. Here, the rest represents initial and final states of an automaton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}\label{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}} 
+typedef struct \mbox{\hyperlink{structtag__paramList}{tag\+\_\+param\+List}} {\bfseries parameter\+List}
+\begin{DoxyCompactList}\small\item\em List of arbitrary parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Graph_8h_ae448deea037b4ec2616b8e42f671f762}\label{Graph_8h_ae448deea037b4ec2616b8e42f671f762}} 
+\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ {\bfseries parameter\+\_\+list\+\_\+add\+\_\+parameter} (\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$list, char $\ast$name, char $\ast$value)
+\begin{DoxyCompactList}\small\item\em Adds a parameter if not already present. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ \mbox{\hyperlink{Graph_8h_a0b15a71ff6e026f72f2500c5880a4fd1}{parameter\+\_\+lists\+\_\+merge}} (\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$head, \mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$tail)
+\begin{DoxyCompactList}\small\item\em Appends tail to head and returns a pointer to the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ \mbox{\hyperlink{Graph_8h_ab4c645dbdad148dba04881955e41960c}{parameter\+\_\+list\+\_\+copy}} (\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$source)
+\begin{DoxyCompactList}\small\item\em Copies a parameter list. Every inner field is copied. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{Graph_8h_ac726e6494fd0403311b7edaaa27870c2}{parameter\+\_\+list\+\_\+get\+\_\+value}} (\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$list, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Get the value associated with name within a list of parameters. Exits the program if not present. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Graph_8h_a8c7faf5432e73efb9731132d51283d68}\label{Graph_8h_a8c7faf5432e73efb9731132d51283d68}} 
+void {\bfseries parameter\+\_\+list\+\_\+delete} (\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Frees a list of parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structGraph}{Graph}} \mbox{\hyperlink{Graph_8h_af7b6e0ceb35ff609db433031dcb00e01}{graph\+\_\+copy}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Creates a copy of the graph passed in argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Graph_8h_aadb3b0ee026d533e8c1b547cb29a2a5e}{graph\+\_\+print}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Displays a graph with a list of nodes and a matrix of edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Graph_8h_a9dd459f40a52af59ceefc309aa705fc7}{graph\+\_\+delete}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Frees all memory occupied by a graph. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{Graph_8h_a0d054c5460a40d56e8b13b4b17ff3e97}{graph\+\_\+get\+\_\+name}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Returns the name of the graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Graph_8h_a7dbe26352a17548da45f6b1feace89d6}{graph\+\_\+num\+\_\+nodes}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Returns the number of nodes of {\ttfamily graph}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Graph_8h_a51210e71e37b387f2f7a4b4c94b08411}{graph\+\_\+num\+\_\+edges}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Returns the number of edges of {\ttfamily graph}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{Graph_8h_a4544ee5a6f922b8b681b7b80c3a8b328}{graph\+\_\+is\+\_\+edge}} (\mbox{\hyperlink{structGraph}{Graph}} graph, int source, int target)
+\begin{DoxyCompactList}\small\item\em Tells if ({\ttfamily source}, {\ttfamily target}) is an edge in {\ttfamily graph}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ \mbox{\hyperlink{Graph_8h_a778aba033e16c42b110b228f1cf12621}{graph\+\_\+get\+\_\+edge\+\_\+parameter}} (\mbox{\hyperlink{structGraph}{Graph}} graph, int source, int target)
+\begin{DoxyCompactList}\small\item\em Returns the parameter list associated to edge ({\ttfamily source}, {\ttfamily target}). Returns NULL if no parameter exists (or the edge doesn\textquotesingle{}t exist). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ \mbox{\hyperlink{Graph_8h_a8aa4e195b14f613f44a4f6cbc739041f}{graph\+\_\+get\+\_\+node\+\_\+parameter}} (\mbox{\hyperlink{structGraph}{Graph}} graph, int node)
+\begin{DoxyCompactList}\small\item\em Return the parameter list associated to node {\ttfamily node}. Returns NULL if no parameter exists. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{Graph_8h_a948ebdcb6550ffd1a0137d3060f9d416}{graph\+\_\+get\+\_\+node\+\_\+name}} (\mbox{\hyperlink{structGraph}{Graph}} graph, int node)
+\begin{DoxyCompactList}\small\item\em Returns the name of a node given its identifier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Graph_8h_a2c9896698457643092d731a2d0dbcea8}{graph\+\_\+fill\+\_\+dot\+\_\+content}} (\mbox{\hyperlink{structGraph}{Graph}} graph, FILE $\ast$file)
+\begin{DoxyCompactList}\small\item\em Writes in {\ttfamily file} the content of {\ttfamily graph} (with parameters) in dot format. For undirected graphs only. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Graph_8h_a6522e1f34342341851e1609b01b0371b}{digraph\+\_\+fill\+\_\+dot\+\_\+content}} (\mbox{\hyperlink{structGraph}{Graph}} graph, FILE $\ast$file)
+\begin{DoxyCompactList}\small\item\em Writes in {\ttfamily file} the content of {\ttfamily graph} (with parameters) in dot format. For directed graphs only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to store a graph statically, and to access to its informations easily. Includes source and target node informations, and colors. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle (\href{mailto:vincent.penelle@u-bordeaux.fr}{\texttt{ vincent.\+penelle@u-\/bordeaux.\+fr}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018-\/11-\/18, 2019-\/07-\/23, 2019-\/08-\/02, 2020-\/06-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Graph_8h_a6522e1f34342341851e1609b01b0371b}\label{Graph_8h_a6522e1f34342341851e1609b01b0371b}} 
+\index{Graph.h@{Graph.h}!digraph\_fill\_dot\_content@{digraph\_fill\_dot\_content}}
+\index{digraph\_fill\_dot\_content@{digraph\_fill\_dot\_content}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{digraph\_fill\_dot\_content()}{digraph\_fill\_dot\_content()}}
+{\footnotesize\ttfamily void digraph\+\_\+fill\+\_\+dot\+\_\+content (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph,  }\item[{FILE $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+Writes in {\ttfamily file} the content of {\ttfamily graph} (with parameters) in dot format. For directed graphs only. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+{\em file} & A file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily file} must be valid. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_af7b6e0ceb35ff609db433031dcb00e01}\label{Graph_8h_af7b6e0ceb35ff609db433031dcb00e01}} 
+\index{Graph.h@{Graph.h}!graph\_copy@{graph\_copy}}
+\index{graph\_copy@{graph\_copy}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_copy()}{graph\_copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGraph}{Graph}} graph\+\_\+copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Creates a copy of the graph passed in argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+graph A copy of graph. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a9dd459f40a52af59ceefc309aa705fc7}\label{Graph_8h_a9dd459f40a52af59ceefc309aa705fc7}} 
+\index{Graph.h@{Graph.h}!graph\_delete@{graph\_delete}}
+\index{graph\_delete@{graph\_delete}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_delete()}{graph\_delete()}}
+{\footnotesize\ttfamily void graph\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Frees all memory occupied by a graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a2c9896698457643092d731a2d0dbcea8}\label{Graph_8h_a2c9896698457643092d731a2d0dbcea8}} 
+\index{Graph.h@{Graph.h}!graph\_fill\_dot\_content@{graph\_fill\_dot\_content}}
+\index{graph\_fill\_dot\_content@{graph\_fill\_dot\_content}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_fill\_dot\_content()}{graph\_fill\_dot\_content()}}
+{\footnotesize\ttfamily void graph\+\_\+fill\+\_\+dot\+\_\+content (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph,  }\item[{FILE $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+Writes in {\ttfamily file} the content of {\ttfamily graph} (with parameters) in dot format. For undirected graphs only. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+{\em file} & A file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily file} must be valid. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a778aba033e16c42b110b228f1cf12621}\label{Graph_8h_a778aba033e16c42b110b228f1cf12621}} 
+\index{Graph.h@{Graph.h}!graph\_get\_edge\_parameter@{graph\_get\_edge\_parameter}}
+\index{graph\_get\_edge\_parameter@{graph\_get\_edge\_parameter}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_get\_edge\_parameter()}{graph\_get\_edge\_parameter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ graph\+\_\+get\+\_\+edge\+\_\+parameter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph,  }\item[{int}]{source,  }\item[{int}]{target }\end{DoxyParamCaption})}
+
+
+
+Returns the parameter list associated to edge ({\ttfamily source}, {\ttfamily target}). Returns NULL if no parameter exists (or the edge doesn\textquotesingle{}t exist). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+{\em source} & The source of the edge. \\
+\hline
+{\em target} & The target of the edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+
+0 \texorpdfstring{$<$}{<}= {\ttfamily source} \texorpdfstring{$<$}{<} {\ttfamily graph.\+num\+Nodes} 
+
+0 \texorpdfstring{$<$}{<}= {\ttfamily target} \texorpdfstring{$<$}{<} {\ttfamily graph.\+num\+Nodes} 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a0d054c5460a40d56e8b13b4b17ff3e97}\label{Graph_8h_a0d054c5460a40d56e8b13b4b17ff3e97}} 
+\index{Graph.h@{Graph.h}!graph\_get\_name@{graph\_get\_name}}
+\index{graph\_get\_name@{graph\_get\_name}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_get\_name()}{graph\_get\_name()}}
+{\footnotesize\ttfamily char $\ast$ graph\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Returns the name of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Its name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Graph_8h_a948ebdcb6550ffd1a0137d3060f9d416}\label{Graph_8h_a948ebdcb6550ffd1a0137d3060f9d416}} 
+\index{Graph.h@{Graph.h}!graph\_get\_node\_name@{graph\_get\_node\_name}}
+\index{graph\_get\_node\_name@{graph\_get\_node\_name}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_get\_node\_name()}{graph\_get\_node\_name()}}
+{\footnotesize\ttfamily char $\ast$ graph\+\_\+get\+\_\+node\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph,  }\item[{int}]{node }\end{DoxyParamCaption})}
+
+
+
+Returns the name of a node given its identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+{\em node} & A node identifier. Must be lower than graph\+\_\+num\+\_\+nodes({\ttfamily graph}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ The name of {\ttfamily node}. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+
+0 \texorpdfstring{$<$}{<}= {\ttfamily node} \texorpdfstring{$<$}{<} {\ttfamily graph.\+num\+Nodes} 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a8aa4e195b14f613f44a4f6cbc739041f}\label{Graph_8h_a8aa4e195b14f613f44a4f6cbc739041f}} 
+\index{Graph.h@{Graph.h}!graph\_get\_node\_parameter@{graph\_get\_node\_parameter}}
+\index{graph\_get\_node\_parameter@{graph\_get\_node\_parameter}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_get\_node\_parameter()}{graph\_get\_node\_parameter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ graph\+\_\+get\+\_\+node\+\_\+parameter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph,  }\item[{int}]{node }\end{DoxyParamCaption})}
+
+
+
+Return the parameter list associated to node {\ttfamily node}. Returns NULL if no parameter exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+{\em node} & Its node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+parameter\+List$\ast$ The parameters of {\ttfamily node}. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+
+0 \texorpdfstring{$<$}{<}= {\ttfamily node} \texorpdfstring{$<$}{<} {\ttfamily graph.\+num\+Nodes}. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a4544ee5a6f922b8b681b7b80c3a8b328}\label{Graph_8h_a4544ee5a6f922b8b681b7b80c3a8b328}} 
+\index{Graph.h@{Graph.h}!graph\_is\_edge@{graph\_is\_edge}}
+\index{graph\_is\_edge@{graph\_is\_edge}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_is\_edge()}{graph\_is\_edge()}}
+{\footnotesize\ttfamily bool graph\+\_\+is\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph,  }\item[{int}]{source,  }\item[{int}]{target }\end{DoxyParamCaption})}
+
+
+
+Tells if ({\ttfamily source}, {\ttfamily target}) is an edge in {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+{\em source} & The source of the edge. \\
+\hline
+{\em target} & The target of the edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the edge is present in {\ttfamily graph}. 
+
+false Otherwise. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+
+0 \texorpdfstring{$<$}{<}= {\ttfamily source} \texorpdfstring{$<$}{<} {\ttfamily graph.\+num\+Nodes} 
+
+0 \texorpdfstring{$<$}{<}= {\ttfamily target} \texorpdfstring{$<$}{<} {\ttfamily graph.\+num\+Nodes} 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a51210e71e37b387f2f7a4b4c94b08411}\label{Graph_8h_a51210e71e37b387f2f7a4b4c94b08411}} 
+\index{Graph.h@{Graph.h}!graph\_num\_edges@{graph\_num\_edges}}
+\index{graph\_num\_edges@{graph\_num\_edges}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_num\_edges()}{graph\_num\_edges()}}
+{\footnotesize\ttfamily int graph\+\_\+num\+\_\+edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Returns the number of edges of {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Its number of edges.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_a7dbe26352a17548da45f6b1feace89d6}\label{Graph_8h_a7dbe26352a17548da45f6b1feace89d6}} 
+\index{Graph.h@{Graph.h}!graph\_num\_nodes@{graph\_num\_nodes}}
+\index{graph\_num\_nodes@{graph\_num\_nodes}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_num\_nodes()}{graph\_num\_nodes()}}
+{\footnotesize\ttfamily int graph\+\_\+num\+\_\+nodes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Returns the number of nodes of {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Its number of nodes.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_aadb3b0ee026d533e8c1b547cb29a2a5e}\label{Graph_8h_aadb3b0ee026d533e8c1b547cb29a2a5e}} 
+\index{Graph.h@{Graph.h}!graph\_print@{graph\_print}}
+\index{graph\_print@{graph\_print}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{graph\_print()}{graph\_print()}}
+{\footnotesize\ttfamily void graph\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Displays a graph with a list of nodes and a matrix of edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & the graph to display.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be a valid graph. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{Graph_8h_ab4c645dbdad148dba04881955e41960c}\label{Graph_8h_ab4c645dbdad148dba04881955e41960c}} 
+\index{Graph.h@{Graph.h}!parameter\_list\_copy@{parameter\_list\_copy}}
+\index{parameter\_list\_copy@{parameter\_list\_copy}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{parameter\_list\_copy()}{parameter\_list\_copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ parameter\+\_\+list\+\_\+copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$}]{source }\end{DoxyParamCaption})}
+
+
+
+Copies a parameter list. Every inner field is copied. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & the list to copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+parameter\+List$\ast$ A copy of source. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Graph_8h_ac726e6494fd0403311b7edaaa27870c2}\label{Graph_8h_ac726e6494fd0403311b7edaaa27870c2}} 
+\index{Graph.h@{Graph.h}!parameter\_list\_get\_value@{parameter\_list\_get\_value}}
+\index{parameter\_list\_get\_value@{parameter\_list\_get\_value}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{parameter\_list\_get\_value()}{parameter\_list\_get\_value()}}
+{\footnotesize\ttfamily char $\ast$ parameter\+\_\+list\+\_\+get\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$}]{list,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Get the value associated with name within a list of parameters. Exits the program if not present. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & A list of parameters. \\
+\hline
+{\em name} & The name of the field to search. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ The value associated with name in list. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Graph_8h_a0b15a71ff6e026f72f2500c5880a4fd1}\label{Graph_8h_a0b15a71ff6e026f72f2500c5880a4fd1}} 
+\index{Graph.h@{Graph.h}!parameter\_lists\_merge@{parameter\_lists\_merge}}
+\index{parameter\_lists\_merge@{parameter\_lists\_merge}!Graph.h@{Graph.h}}
+\doxysubsubsection{\texorpdfstring{parameter\_lists\_merge()}{parameter\_lists\_merge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$ parameter\+\_\+lists\+\_\+merge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$}]{head,  }\item[{\mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameter\+List}} $\ast$}]{tail }\end{DoxyParamCaption})}
+
+
+
+Appends tail to head and returns a pointer to the result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em head} & A parameter list. \\
+\hline
+{\em tail} & A parameter list. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,483 @@
+\hypertarget{TunnelReduction_8h}{}\doxysection{include/\+Tunnel\+Routing/\+Tunnel\+Reduction.h File Reference}
+\label{TunnelReduction_8h}\index{include/TunnelRouting/TunnelReduction.h@{include/TunnelRouting/TunnelReduction.h}}
+
+
+An implementation of the reduction of the Tunnel Routing problem to SAT. Converts a network n and a bound b to a propositional formula that is satisfiable if and only there is a well-\/formed simple path of size b from the source to the target. A satisfying valuation represents such a path. Provides functions to generate the formula, the necessary variables, and decoding a path from a valuation.  
+
+
+{\ttfamily \#include \char`\"{}Tunnel\+Network.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$z3.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_af7379a42a9054e394d3fc070a6f97462}{tn\+\_\+reduction}} (Z3\+\_\+context ctx, const \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int length)
+\begin{DoxyCompactList}\small\item\em Generates a propositional formula satisfiable if and only if there is a well-\/formed simple path of size {\ttfamily bound} from the initial node of {\ttfamily network} to its final node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelReduction_8h_ac29ba462813aa79058cba2cdf20b4ef2}{tn\+\_\+get\+\_\+path\+\_\+from\+\_\+model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int bound, \mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$path)
+\begin{DoxyCompactList}\small\item\em Gets the well-\/formed path from the model {\ttfamily model}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{TunnelReduction_8h_a07d3e83557e2bf97e80230a74375b838}{tn\+\_\+print\+\_\+model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int bound)
+\begin{DoxyCompactList}\small\item\em Prints (in pretty format) which variables used by the tunnel reduction are true in {\ttfamily model}. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_a9faa71cc956357912bd652e6ce9caf8f}{pile\+\_\+p1}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int l, int hmax)
+\begin{DoxyCompactList}\small\item\em Check every position in the path to be sure that if there is a node, the pile can\textquotesingle{}t have a 4 and a 6 at the same time. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_aa8fe11aa5db417966fd43b8251d7da62}{B}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int h, int n, int p)
+\begin{DoxyCompactList}\small\item\em Check for each height under the current node that there is another and the stack isn\textquotesingle{}t weird. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_a88afb06838455c8fb0a383c58658de89}{A}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int h, int hmax, int n, int p)
+\begin{DoxyCompactList}\small\item\em Check for each height over the current node that there is nothing. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_ae3fcc4ebc2c6efa97995ede0710c4589}{pile\+\_\+p2}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int l, int hmax)
+\begin{DoxyCompactList}\small\item\em Check the stack has the right value on his top after an operation. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_a0952ef6811f7b9700dae2b4b5a4ac7aa}{start\+\_\+end\+\_\+condition}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int hmax, int l)
+\begin{DoxyCompactList}\small\item\em Check the start and the end of the path. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_a932e5ec1558c0e2188d4d6eee7d7dfb8}{simple\+\_\+path}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int hmax, int l)
+\begin{DoxyCompactList}\small\item\em Check if there is a simple path of size l in the network. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_ad366a37c7a8f98e81002a9185acbde45}{My\+\_\+\+At\+\_\+\+Most}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int hmax, int l)
+\begin{DoxyCompactList}\small\item\em Our implementation of At\+\_\+most. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_acb47123e24d539b375fd442adb82328d}{valid\+\_\+path}} (Z3\+\_\+context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}} network, int node, int pos, int h, int bound)
+\begin{DoxyCompactList}\small\item\em Check if the node can make an operation to another node. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_a20c734ceb386dd4c98ebb4d806c4cf1a}{equivalent}} (Z3\+\_\+context ctx, int pos, int h)
+\begin{DoxyCompactList}\small\item\em Each stage of the stack as the same value at a position and the next one (not last h if pop) \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_ae28c6d439e62d62db7a8621b9cfa1c3e}{transmitting}} (Z3\+\_\+context ctx, int a, int pos, int h, int next, int current)
+\begin{DoxyCompactList}\small\item\em Verifying a node transmit correctly. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_a3be5884a132c7f6ac75e30751cfcd38d}{pushing}} (Z3\+\_\+context ctx, int a, int b, int pos, int h, int next, int bound, int current)
+\begin{DoxyCompactList}\small\item\em Verifying a node push correctly. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{TunnelReduction_8h_a7ceddebb8bb332139c4959dd3173af44}{popping}} (Z3\+\_\+context ctx, int a, int b, int pos, int h, int next, int current)
+\begin{DoxyCompactList}\small\item\em Verifying a node pop correctly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An implementation of the reduction of the Tunnel Routing problem to SAT. Converts a network n and a bound b to a propositional formula that is satisfiable if and only there is a well-\/formed simple path of size b from the source to the target. A satisfying valuation represents such a path. Provides functions to generate the formula, the necessary variables, and decoding a path from a valuation. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle (\href{mailto:vincent.penelle@u-bordeaux.fr}{\texttt{ vincent.\+penelle@u-\/bordeaux.\+fr}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/10-\/03
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TunnelReduction_8h_a88afb06838455c8fb0a383c58658de89}\label{TunnelReduction_8h_a88afb06838455c8fb0a383c58658de89}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!A@{A}}
+\index{A@{A}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{A()}{A()}}
+{\footnotesize\ttfamily Z3\+\_\+ast A (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{h,  }\item[{int}]{hmax,  }\item[{int}]{n,  }\item[{int}]{p }\end{DoxyParamCaption})}
+
+
+
+Check for each height over the current node that there is nothing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em h} & The height we are looking from. \\
+\hline
+{\em n} & The node we currently are. \\
+\hline
+{\em p} & The position we currently are. \\
+\hline
+{\em hmax} & The maximum height of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_aa8fe11aa5db417966fd43b8251d7da62}\label{TunnelReduction_8h_aa8fe11aa5db417966fd43b8251d7da62}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!B@{B}}
+\index{B@{B}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{B()}{B()}}
+{\footnotesize\ttfamily Z3\+\_\+ast B (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{h,  }\item[{int}]{n,  }\item[{int}]{p }\end{DoxyParamCaption})}
+
+
+
+Check for each height under the current node that there is another and the stack isn\textquotesingle{}t weird. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em h} & The height we are looking from. \\
+\hline
+{\em n} & The node we currently are. \\
+\hline
+{\em p} & The position we currently are. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_a20c734ceb386dd4c98ebb4d806c4cf1a}\label{TunnelReduction_8h_a20c734ceb386dd4c98ebb4d806c4cf1a}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!equivalent@{equivalent}}
+\index{equivalent@{equivalent}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{equivalent()}{equivalent()}}
+{\footnotesize\ttfamily Z3\+\_\+ast equivalent (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{int}]{pos,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Each stage of the stack as the same value at a position and the next one (not last h if pop) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em pos} & The position we currently are. \\
+\hline
+{\em h} & The height of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_ad366a37c7a8f98e81002a9185acbde45}\label{TunnelReduction_8h_ad366a37c7a8f98e81002a9185acbde45}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!My\_At\_Most@{My\_At\_Most}}
+\index{My\_At\_Most@{My\_At\_Most}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{My\_At\_Most()}{My\_At\_Most()}}
+{\footnotesize\ttfamily Z3\+\_\+ast My\+\_\+\+At\+\_\+\+Most (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{hmax,  }\item[{int}]{l }\end{DoxyParamCaption})}
+
+
+
+Our implementation of At\+\_\+most. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em l} & The size of the target path. \\
+\hline
+{\em hmax} & The max size of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast The formula 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_a9faa71cc956357912bd652e6ce9caf8f}\label{TunnelReduction_8h_a9faa71cc956357912bd652e6ce9caf8f}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!pile\_p1@{pile\_p1}}
+\index{pile\_p1@{pile\_p1}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{pile\_p1()}{pile\_p1()}}
+{\footnotesize\ttfamily Z3\+\_\+ast pile\+\_\+p1 (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{l,  }\item[{int}]{hmax }\end{DoxyParamCaption})}
+
+
+
+Check every position in the path to be sure that if there is a node, the pile can\textquotesingle{}t have a 4 and a 6 at the same time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em l} & The size of the target path. \\
+\hline
+{\em hmax} & The max size of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_ae3fcc4ebc2c6efa97995ede0710c4589}\label{TunnelReduction_8h_ae3fcc4ebc2c6efa97995ede0710c4589}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!pile\_p2@{pile\_p2}}
+\index{pile\_p2@{pile\_p2}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{pile\_p2()}{pile\_p2()}}
+{\footnotesize\ttfamily Z3\+\_\+ast pile\+\_\+p2 (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{l,  }\item[{int}]{hmax }\end{DoxyParamCaption})}
+
+
+
+Check the stack has the right value on his top after an operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em l} & The size of the target path. \\
+\hline
+{\em hmax} & The max size of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_a7ceddebb8bb332139c4959dd3173af44}\label{TunnelReduction_8h_a7ceddebb8bb332139c4959dd3173af44}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!popping@{popping}}
+\index{popping@{popping}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{popping()}{popping()}}
+{\footnotesize\ttfamily Z3\+\_\+ast popping (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{pos,  }\item[{int}]{h,  }\item[{int}]{next,  }\item[{int}]{current }\end{DoxyParamCaption})}
+
+
+
+Verifying a node pop correctly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em a} & The current value of the top of the stack. \\
+\hline
+{\em b} & The popping value. \\
+\hline
+{\em pos} & The position we currently are. \\
+\hline
+{\em h} & The current height of the stack. \\
+\hline
+{\em current} & The node doing the popping. \\
+\hline
+{\em next} & A different node comparing to current. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_a3be5884a132c7f6ac75e30751cfcd38d}\label{TunnelReduction_8h_a3be5884a132c7f6ac75e30751cfcd38d}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!pushing@{pushing}}
+\index{pushing@{pushing}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{pushing()}{pushing()}}
+{\footnotesize\ttfamily Z3\+\_\+ast pushing (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{pos,  }\item[{int}]{h,  }\item[{int}]{next,  }\item[{int}]{bound,  }\item[{int}]{current }\end{DoxyParamCaption})}
+
+
+
+Verifying a node push correctly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em a} & The current value of the top of the stack. \\
+\hline
+{\em b} & The pushing value. \\
+\hline
+{\em pos} & The position we currently are. \\
+\hline
+{\em h} & The current height of the stack. \\
+\hline
+{\em current} & The node doing the pushing. \\
+\hline
+{\em next} & A different node comparing to current. \\
+\hline
+{\em bound} & The maximum size of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_a932e5ec1558c0e2188d4d6eee7d7dfb8}\label{TunnelReduction_8h_a932e5ec1558c0e2188d4d6eee7d7dfb8}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!simple\_path@{simple\_path}}
+\index{simple\_path@{simple\_path}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{simple\_path()}{simple\_path()}}
+{\footnotesize\ttfamily Z3\+\_\+ast simple\+\_\+path (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{hmax,  }\item[{int}]{l }\end{DoxyParamCaption})}
+
+
+
+Check if there is a simple path of size l in the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em l} & The size of the target path. \\
+\hline
+{\em hmax} & The max size of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_a0952ef6811f7b9700dae2b4b5a4ac7aa}\label{TunnelReduction_8h_a0952ef6811f7b9700dae2b4b5a4ac7aa}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!start\_end\_condition@{start\_end\_condition}}
+\index{start\_end\_condition@{start\_end\_condition}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{start\_end\_condition()}{start\_end\_condition()}}
+{\footnotesize\ttfamily Z3\+\_\+ast start\+\_\+end\+\_\+condition (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{hmax,  }\item[{int}]{l }\end{DoxyParamCaption})}
+
+
+
+Check the start and the end of the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em l} & The size of the target path. \\
+\hline
+{\em hmax} & The max size of the stack. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_ac29ba462813aa79058cba2cdf20b4ef2}\label{TunnelReduction_8h_ac29ba462813aa79058cba2cdf20b4ef2}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!tn\_get\_path\_from\_model@{tn\_get\_path\_from\_model}}
+\index{tn\_get\_path\_from\_model@{tn\_get\_path\_from\_model}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{tn\_get\_path\_from\_model()}{tn\_get\_path\_from\_model()}}
+{\footnotesize\ttfamily void tn\+\_\+get\+\_\+path\+\_\+from\+\_\+model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{bound,  }\item[{\mbox{\hyperlink{structtn__step}{tn\+\_\+step}} $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+Gets the well-\/formed path from the model {\ttfamily model}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em model} & A variable assignment. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em bound} & The size of the path. \\
+\hline
+{\em path} & The path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily path} must be an array of size {\ttfamily bound+1}. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_a07d3e83557e2bf97e80230a74375b838}\label{TunnelReduction_8h_a07d3e83557e2bf97e80230a74375b838}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!tn\_print\_model@{tn\_print\_model}}
+\index{tn\_print\_model@{tn\_print\_model}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{tn\_print\_model()}{tn\_print\_model()}}
+{\footnotesize\ttfamily void tn\+\_\+print\+\_\+model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{bound }\end{DoxyParamCaption})}
+
+
+
+Prints (in pretty format) which variables used by the tunnel reduction are true in {\ttfamily model}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em model} & A variable assignment. \\
+\hline
+{\em network} & A tunnel network. \\
+\hline
+{\em bound} & The size of the path. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{TunnelReduction_8h_af7379a42a9054e394d3fc070a6f97462}\label{TunnelReduction_8h_af7379a42a9054e394d3fc070a6f97462}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!tn\_reduction@{tn\_reduction}}
+\index{tn\_reduction@{tn\_reduction}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{tn\_reduction()}{tn\_reduction()}}
+{\footnotesize\ttfamily Z3\+\_\+ast tn\+\_\+reduction (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{const \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Generates a propositional formula satisfiable if and only if there is a well-\/formed simple path of size {\ttfamily bound} from the initial node of {\ttfamily network} to its final node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & A Tunnel Network. \\
+\hline
+{\em length} & The size of the target path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast The formula 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_ae28c6d439e62d62db7a8621b9cfa1c3e}\label{TunnelReduction_8h_ae28c6d439e62d62db7a8621b9cfa1c3e}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!transmitting@{transmitting}}
+\index{transmitting@{transmitting}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{transmitting()}{transmitting()}}
+{\footnotesize\ttfamily Z3\+\_\+ast transmitting (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{int}]{a,  }\item[{int}]{pos,  }\item[{int}]{h,  }\item[{int}]{next,  }\item[{int}]{current }\end{DoxyParamCaption})}
+
+
+
+Verifying a node transmit correctly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em a} & The transmitting value. \\
+\hline
+{\em pos} & The position we currently are. \\
+\hline
+{\em h} & The current height of the stack. \\
+\hline
+{\em current} & The node doing the transmission. \\
+\hline
+{\em next} & A different node comparing to current. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast The formula 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily network} must be initialized. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{TunnelReduction_8h_acb47123e24d539b375fd442adb82328d}\label{TunnelReduction_8h_acb47123e24d539b375fd442adb82328d}} 
+\index{TunnelReduction.h@{TunnelReduction.h}!valid\_path@{valid\_path}}
+\index{valid\_path@{valid\_path}!TunnelReduction.h@{TunnelReduction.h}}
+\doxysubsubsection{\texorpdfstring{valid\_path()}{valid\_path()}}
+{\footnotesize\ttfamily Z3\+\_\+ast valid\+\_\+path (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{\mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{Tunnel\+Network}}}]{network,  }\item[{int}]{node,  }\item[{int}]{pos,  }\item[{int}]{h,  }\item[{int}]{bound }\end{DoxyParamCaption})}
+
+
+
+Check if the node can make an operation to another node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em network} & The network we are working in. \\
+\hline
+{\em node} & The current node. \\
+\hline
+{\em pos} & The path position. \\
+\hline
+{\em height} & The height of the cell described. \\
+\hline
+{\em bound} & The maximum size of the pile. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast 
+\end{DoxyReturn}

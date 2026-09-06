@@ -1,0 +1,61 @@
+\hypertarget{ColouringResolution_8h}{}\doxysection{include/\+Colouring\+Problem/\+Colouring\+Resolution.h File Reference}
+\label{ColouringResolution_8h}\index{include/ColouringProblem/ColouringResolution.h@{include/ColouringProblem/ColouringResolution.h}}
+
+
+Algorithms to solve directly the Colouring problem.  
+
+
+{\ttfamily \#include \char`\"{}Coloured\+Graph.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{ColouringResolution_8h_ae71b82949dbe18c528a31eab7133ac66}{colouring\+\_\+brute\+\_\+force}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int num\+\_\+colours)
+\begin{DoxyCompactList}\small\item\em Brute Force Algorithm to solve the colouring problem. If it is solvable, {\ttfamily graph} is modified so at the return of the algorithm, the nodes are coloured. If there is no solution, {\ttfamily graph} has all colours set to -\/1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Algorithms to solve directly the Colouring problem. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle (\href{mailto:vincent.penelle@u-bordeaux.fr}{\texttt{ vincent.\+penelle@u-\/bordeaux.\+fr}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/09-\/22
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ColouringResolution_8h_ae71b82949dbe18c528a31eab7133ac66}\label{ColouringResolution_8h_ae71b82949dbe18c528a31eab7133ac66}} 
+\index{ColouringResolution.h@{ColouringResolution.h}!colouring\_brute\_force@{colouring\_brute\_force}}
+\index{colouring\_brute\_force@{colouring\_brute\_force}!ColouringResolution.h@{ColouringResolution.h}}
+\doxysubsubsection{\texorpdfstring{colouring\_brute\_force()}{colouring\_brute\_force()}}
+{\footnotesize\ttfamily bool colouring\+\_\+brute\+\_\+force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{num\+\_\+colours }\end{DoxyParamCaption})}
+
+
+
+Brute Force Algorithm to solve the colouring problem. If it is solvable, {\ttfamily graph} is modified so at the return of the algorithm, the nodes are coloured. If there is no solution, {\ttfamily graph} has all colours set to -\/1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em num\+\_\+colours} & The number of colours available. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is a solution. 
+
+false if there is no solution.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be valid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+{\ttfamily if} returns true, the colours of {\ttfamily graph} is a solution to the Colouring problem with {\ttfamily num\+\_\+colours} colors. 
+\end{DoxyPostcond}

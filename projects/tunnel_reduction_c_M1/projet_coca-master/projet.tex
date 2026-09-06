@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+\title{Compte rendu du projet de CoCa}
+\author{Pourageaud Matthieu / Vasseur Cengiz}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+On définit dans notre structure les variables booléennes :
+
+\medskip
+
+\noindent
+$x_{n,p,h}$ : le sommet $n$ à la position $p$ a une hauteur de pile $h$.\\
+$y_{p,h,a}$ : à la position $p$, il y a un paquet de valeur $a$ à l'étage $h$ de la pile.
+
+\medskip
+
+On définit aussi :
+\begin{itemize}
+  \item $s$ : le sommet de départ,
+  \item $e$ : le sommet d'arrivée,
+  \item $length$ : la longueur du chemin,
+  \item $Op$ : l'ensemble d'opérations
+  \[
+    \{\,4 \to 4,\; 6 \to 6,\; 4 \uparrow 44,\; 4 \uparrow 46,\; 6 \uparrow 64,\; 6 \uparrow 66,\; 44 \downarrow 4,\; 46 \downarrow 4,\; 64 \downarrow 6,\; 66 \downarrow 6\,\},
+  \]
+  \item $h_{\max}$ : la hauteur maximale de la pile,
+\end{itemize}
+
+Soit le réseau \[R = ⟨G = (V, E), PUSH_{a}^{b}, POP_{a}^{b}, T_{a} | a,b \in {4, 6}⟩\]\\
+Problème : Existe-t-il un chemin simple et valide de $s$ à $e$ de longueur $length$ dans le réseau $R$ ?
+
+\subsection{Début et fin de chemin}
+
+Début (s, V, hmax) :
+\[
+x_{s,0,0} \land y_{0,0,4} \land \lnot y_{0,0,6}
+\land \bigwedge_{n\in V} \lnot x_{n,0,0}
+\land \bigwedge_{h=1}^{h_{\max}} \bigwedge_{n\in V} \lnot x_{n,0,h}.
+\]
+
+Fin (e, length, V, hmax) :
+\[
+x_{e,\;length,\;0} \land y_{length,0,4} \land \lnot y_{length,0,6}
+\land \bigwedge_{n\in V} \lnot x_{n,\,length,\,0}
+\land \bigwedge_{h=1}^{h_{\max}} \bigwedge_{n\in V} \lnot x_{n,\,length,\,h}.
+\]
+
+\subsection{Chemin simple et valide}
+\[
+\bigwedge_{p=0}^{l} \bigwedge_{h=0}^{h_{\max}} \bigwedge_{n\in V} \Bigl( \text{Unique}\bigl(x_{n,p,h}\bigr).
+\land
+\bigl( x_{n,p,h} \Rightarrow
+\bigvee_{\substack{n' \in V \\ n' \neq n}} \bigvee_{op \in Op}
+\bigl(\text{Transmission}\ \lor\ \text{Encapsule}\ \lor\ \text{Decapsule}\bigr) \bigr) \Bigr).
+\]
+
+\subsubsection*{Transmission (op = $4\to 4$ ou $6\to 6$)}
+\[
+\text{Transmission (p, h, a, n\')}:\qquad
+y_{p,h,a} \land x_{n',\,p+1,\,h} \land y_{p+1,\,h,\,a}
+\iff y_{p,h,a} \land y_{p+1,h,a}.
+\]
+
+\subsubsection*{Encapsule (op = $4\uparrow44$, $4\uparrow46$, $6\uparrow64$, $6\uparrow66$)}
+\[
+\text{Encapsule (n, p, h, n\') si $h < h_{\max}$}:\qquad
+x_{n,p,h} \Rightarrow
+\bigl( y_{p,h,a} \land x_{n',\,p+1,\,h+1} \land y_{p+1,\,h+1,\,b} \land y_{p+1,\,h,\,4} \bigr).
+\]
+
+\subsubsection*{Decapsule (op = $44\downarrow4$, $46\downarrow4$, $64\downarrow6$, $66\downarrow6$)}
+\[
+\text{Decapsule (n, p, h, n\') si $h>0$}:\qquad
+x_{n,p,h} \Rightarrow
+\bigl( y_{p,h,a} \land x_{n',\,p+1,\,h-1} \land y_{p+1,\,h-1,\,b} \land y_{p+1,\,h,\,4} \bigr).
+\]
+
+\subsection{Pile cohérente}
+
+\paragraph{Partie 1 (length, V, hmax) :}
+Pour chaque position $p$ :
+\[
+\bigwedge_{p=0}^{length}\Biggl(
+\bigl(\bigvee_{n\in V} x_{n,p,0}\bigr) \Rightarrow \lnot\bigl(y_{p,0,4}\land y_{p,0,6}\bigr) \land
+\bigwedge_{h=1}^{h_{\max}} \Bigl(
+\bigl(\bigvee_{n\in V} x_{n,p,h}\bigr) \Rightarrow 
+\bigl((y_{p,h,4}\land \lnot y_{p,h,6}) \lor (\lnot y_{p,h,4}\land y_{p,h,6})\bigr)
+\Bigr). \Biggr) 
+\]
+
+\paragraph{Partie 2 (length, V, hmax) :}
+\[
+\bigwedge_{n\in V}\bigwedge_{p=0}^{length}\bigwedge_{h=0}^{h_{\max}}
+\bigl( x_{n,p,h} \Rightarrow (H_{\text{grand}} \land H_{\text{petit}}) \bigr).
+\]
+
+\noindent
+Soit $H_{\text{grand}}$ :
+\[
+H_{\text{grand}}:\qquad
+\bigwedge_{h'=h+1}^{h_{\max}} \Bigl( \lnot\bigl(x_{n,p,h} \land y_{p,h',4}\bigr) \land \lnot\bigl(x_{n,p,h} \land y_{p,h',6}\bigr) \Bigr).
+\]
+
+\noindent
+Soit $H_{\text{petit}}$ :
+\[
+H_{\text{petit}}:\qquad
+\bigwedge_{h'=0}^{h} \Bigl( \lnot x_{n,p,h} \lor y_{p,h',4} \lor y_{p,h',6} \Bigr).
+\]
+
+\subsection{Unique}
+
+\paragraph{Au plus:}
+Soit Au plus (length, V, hmax) :
+\[
+\bigwedge_{n\in V}\bigwedge_{p=0}^{length}\bigwedge_{h=0}^{h_{\max}\bigwedge_{n' in V n \neq n'}}
+\bigl( \lnot x_{n,p,h} \land \lnot x_{n',p,h} \bigr).
+\]
+
+\paragraph{Au moins :}
+Soit Au moins (length, V, hmax) :
+\[
+\bigwedge_{n\in V}\bigwedge_{p=0}^{length}\bigwedge_{h=0}^{h_{\max}}.
+x_{n,p,h}.
+\]
+
+\paragraph{Unique :}
+Soit Unique (length, V, hmax) :
+\[
+\bigwedge_{n\in V}\bigwedge_{p=0}^{length}\bigwedge_{h=0}^{h_{\max}}.
+\text{Au moins (n, p, h)} \land \text{Au plus (n, p, h)}.
+\]
+
+\section{Formules}
+
+La formule finale sera alors :
+
+\[
+\text{Début} \land \text{Fin} \land \text{Chemin simple} \land \text{Chemin valide} \land \text{Pile cohérente}
+\]
+
+
+\end{document}

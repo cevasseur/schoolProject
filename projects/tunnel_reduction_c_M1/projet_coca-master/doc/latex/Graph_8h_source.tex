@@ -1,0 +1,67 @@
+\hypertarget{Graph_8h_source}{}\doxysection{Graph.\+h}
+\label{Graph_8h_source}\index{include/main/Graph.h@{include/main/Graph.h}}
+\mbox{\hyperlink{Graph_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#ifndef COCA\_GRAPH\_H\_}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define COCA\_GRAPH\_H\_}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{23 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structtag__paramList}{tag\_paramList}}}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     \textcolor{keywordtype}{char} *\mbox{\hyperlink{structtag__paramList_ae9f08f2e0a5ee7515edae0f92455fa22}{name}};                 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{char} *\mbox{\hyperlink{structtag__paramList_a293f712b40acf038a5fcfd6b950e3bab}{value}};               }
+\DoxyCodeLine{27     \textcolor{keyword}{struct }\mbox{\hyperlink{structtag__paramList}{tag\_paramList}} *\mbox{\hyperlink{structtag__paramList_a14ce8306451094abded3a59357fe8a4a}{next}}; }
+\DoxyCodeLine{28 \} \mbox{\hyperlink{Graph_8h_aebaa4a8ff167f32b416311d26b445ec8}{parameterList}};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{34 \mbox{\hyperlink{structtag__paramList}{parameterList}} *\mbox{\hyperlink{Graph_8h_ae448deea037b4ec2616b8e42f671f762}{parameter\_list\_add\_parameter}}(\mbox{\hyperlink{structtag__paramList}{parameterList}} *list, \textcolor{keywordtype}{char} *\mbox{\hyperlink{structtag__paramList_ae9f08f2e0a5ee7515edae0f92455fa22}{name}}, \textcolor{keywordtype}{char} *\mbox{\hyperlink{structtag__paramList_a293f712b40acf038a5fcfd6b950e3bab}{value}});}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{42 \mbox{\hyperlink{structtag__paramList}{parameterList}} *\mbox{\hyperlink{Graph_8h_a0b15a71ff6e026f72f2500c5880a4fd1}{parameter\_lists\_merge}}(\mbox{\hyperlink{structtag__paramList}{parameterList}} *head, \mbox{\hyperlink{structtag__paramList}{parameterList}} *tail);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{50 \mbox{\hyperlink{structtag__paramList}{parameterList}} *\mbox{\hyperlink{Graph_8h_ab4c645dbdad148dba04881955e41960c}{parameter\_list\_copy}}(\mbox{\hyperlink{structtag__paramList}{parameterList}} *source);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{59 \textcolor{keywordtype}{char} *\mbox{\hyperlink{Graph_8h_ac726e6494fd0403311b7edaaa27870c2}{parameter\_list\_get\_value}}(\mbox{\hyperlink{structtag__paramList}{parameterList}} *list, \textcolor{keywordtype}{char} *\mbox{\hyperlink{structtag__paramList_ae9f08f2e0a5ee7515edae0f92455fa22}{name}});}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} \mbox{\hyperlink{Graph_8h_a8c7faf5432e73efb9731132d51283d68}{parameter\_list\_delete}}(\mbox{\hyperlink{structtag__paramList}{parameterList}} *list);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{68 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70     \textcolor{keywordtype}{char} *\mbox{\hyperlink{structGraph_afed41f9184f9deee76a34ea036b74f00}{name}};   }
+\DoxyCodeLine{71     \textcolor{keywordtype}{int} \mbox{\hyperlink{structGraph_ad3db12d7f8327a6717fd161d694e43c0}{numNodes}}; }
+\DoxyCodeLine{72     \textcolor{keywordtype}{int} \mbox{\hyperlink{structGraph_a4f98dc06b0c1e32b27fa26efc0e11777}{numEdges}}; }
+\DoxyCodeLine{73     \textcolor{keywordtype}{char} **\mbox{\hyperlink{structGraph_aa08cad811e4bd8af7d8592d215009205}{nodes}}; }
+\DoxyCodeLine{74     \textcolor{keywordtype}{bool} *\mbox{\hyperlink{structGraph_a62f3e0acacf556871b976b1c7ad66c54}{edges}};  }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \mbox{\hyperlink{structtag__paramList}{parameterList}} **\mbox{\hyperlink{structGraph_a4fc13b2748ad0f5c7dfbafd0dc3c9877}{parameters}};       }
+\DoxyCodeLine{77     \mbox{\hyperlink{structtag__paramList}{parameterList}} **\mbox{\hyperlink{structGraph_a92e919dac17ca9971a52fb94a048dc02}{edge\_parameters}}; }
+\DoxyCodeLine{78 \} \mbox{\hyperlink{structGraph}{Graph}};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{87 \mbox{\hyperlink{structGraph}{Graph}} \mbox{\hyperlink{Graph_8h_af7b6e0ceb35ff609db433031dcb00e01}{graph\_copy}}(\mbox{\hyperlink{structGraph}{Graph}} graph);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{96 \textcolor{keywordtype}{void} \mbox{\hyperlink{Graph_8h_aadb3b0ee026d533e8c1b547cb29a2a5e}{graph\_print}}(\mbox{\hyperlink{structGraph}{Graph}} graph);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{105 \textcolor{keywordtype}{void} \mbox{\hyperlink{Graph_8h_a9dd459f40a52af59ceefc309aa705fc7}{graph\_delete}}(\mbox{\hyperlink{structGraph}{Graph}} graph);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{113 \textcolor{keywordtype}{char} *\mbox{\hyperlink{Graph_8h_a0d054c5460a40d56e8b13b4b17ff3e97}{graph\_get\_name}}(\mbox{\hyperlink{structGraph}{Graph}} graph);}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{123 \textcolor{keywordtype}{int} \mbox{\hyperlink{Graph_8h_a7dbe26352a17548da45f6b1feace89d6}{graph\_num\_nodes}}(\mbox{\hyperlink{structGraph}{Graph}} graph);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{133 \textcolor{keywordtype}{int} \mbox{\hyperlink{Graph_8h_a51210e71e37b387f2f7a4b4c94b08411}{graph\_num\_edges}}(\mbox{\hyperlink{structGraph}{Graph}} graph);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{147 \textcolor{keywordtype}{bool} \mbox{\hyperlink{Graph_8h_a4544ee5a6f922b8b681b7b80c3a8b328}{graph\_is\_edge}}(\mbox{\hyperlink{structGraph}{Graph}} graph, \textcolor{keywordtype}{int} source, \textcolor{keywordtype}{int} target);}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{159 \mbox{\hyperlink{structtag__paramList}{parameterList}} *\mbox{\hyperlink{Graph_8h_a778aba033e16c42b110b228f1cf12621}{graph\_get\_edge\_parameter}}(\mbox{\hyperlink{structGraph}{Graph}} graph, \textcolor{keywordtype}{int} source, \textcolor{keywordtype}{int} target);}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{170 \mbox{\hyperlink{structtag__paramList}{parameterList}} *\mbox{\hyperlink{Graph_8h_a8aa4e195b14f613f44a4f6cbc739041f}{graph\_get\_node\_parameter}}(\mbox{\hyperlink{structGraph}{Graph}} graph, \textcolor{keywordtype}{int} node);}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{181 \textcolor{keywordtype}{char} *\mbox{\hyperlink{Graph_8h_a948ebdcb6550ffd1a0137d3060f9d416}{graph\_get\_node\_name}}(\mbox{\hyperlink{structGraph}{Graph}} graph, \textcolor{keywordtype}{int} node);}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{190 \textcolor{keywordtype}{void} \mbox{\hyperlink{Graph_8h_a2c9896698457643092d731a2d0dbcea8}{graph\_fill\_dot\_content}}(\mbox{\hyperlink{structGraph}{Graph}} graph, FILE *file);}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{199 \textcolor{keywordtype}{void} \mbox{\hyperlink{Graph_8h_a6522e1f34342341851e1609b01b0371b}{digraph\_fill\_dot\_content}}(\mbox{\hyperlink{structGraph}{Graph}} graph, FILE *file);}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* DOT\_PARSER\_GRAPH\_H\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,259 @@
+\hypertarget{ColouredGraph_8h}{}\doxysection{include/\+Colouring\+Problem/\+Coloured\+Graph.h File Reference}
+\label{ColouredGraph_8h}\index{include/ColouringProblem/ColouredGraph.h@{include/ColouringProblem/ColouredGraph.h}}
+
+
+Structure to a graph with colours coded as an integer. The colours themselves are not part of the structure, only the fact they are same or different matters.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Graph.\+h\char`\"{}}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}\label{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}} 
+typedef struct Coloured\+Graph\+\_\+s $\ast$ {\bfseries Coloured\+Graph}
+\begin{DoxyCompactList}\small\item\em The struct containing a graph, and a colour for each node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} \mbox{\hyperlink{ColouredGraph_8h_aaa69dbb12a755496affcf713f802d87b}{cg\+\_\+initialize}} (\mbox{\hyperlink{structGraph}{Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Initializes a Coloured\+Graph from a \mbox{\hyperlink{structGraph}{Graph}} for use in the functions. Does not color the graph (for use in colouring problem). The graph is NOT copied (as it is not supposed to be modified). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ColouredGraph_8h_a39da71fd8614717d7d3391dc97c2a83c}{cg\+\_\+print}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Printer function to display information about {\ttfamily graph} in input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ColouredGraph_8h_a70f9bf2c041f5eca48d48fa8b9861524}{cg\+\_\+print\+\_\+colors}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Printer function to display the colors of nodes in {\ttfamily graph}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ColouredGraph_8h_ad9e641721583b2a4ecb48ee061a2e674}{cg\+\_\+delete}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Deallocates memory used by a {\ttfamily graph} (what is allocated by rg\+\_\+initialize). Warning\+: does NOT deallocate the \mbox{\hyperlink{structGraph}{Graph}} inside the {\ttfamily graph}. The \mbox{\hyperlink{structGraph}{Graph}} must be deallocated with adequate function from \mbox{\hyperlink{Graph_8h}{Graph.\+h}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ColouredGraph_8h_a183a15251f120550bcf5770ff104694e}{cg\+\_\+get\+\_\+num\+\_\+nodes}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Returns the number of nodes of {\ttfamily graph}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ColouredGraph_8h_a40a4e29fabf1effa7a0805dda8b6516a}{cg\+\_\+get\+\_\+num\+\_\+edges}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph)
+\begin{DoxyCompactList}\small\item\em Returns the number of edges of {\ttfamily graph}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ColouredGraph_8h_a0fe4516b30d519093fdad79159f2495d}{cg\+\_\+is\+\_\+edge}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int source, int target)
+\begin{DoxyCompactList}\small\item\em Gets if ({\ttfamily source},{\ttfamily target}) is an edge in {\ttfamily graph}. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{ColouredGraph_8h_a9721546f47644699a8e1f04b5c5ae1bf}{cg\+\_\+get\+\_\+node\+\_\+name}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int node)
+\begin{DoxyCompactList}\small\item\em Gets the name of {\ttfamily node} in {\ttfamily graph}. The name is what appears in the .dot file, while its number is local to this program. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ColouredGraph_8h_ac3ec3ff3de10f48059df16f223f7b7c7}{cg\+\_\+get\+\_\+node\+\_\+colour}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int node)
+\begin{DoxyCompactList}\small\item\em Gets the color of {\ttfamily node} in {\ttfamily graph}. If the color is not set, returns -\/1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ColouredGraph_8h_a3c8648b05f1b7c3474c50f1ea9172081}{cg\+\_\+set\+\_\+node\+\_\+colour}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int node, int colour)
+\begin{DoxyCompactList}\small\item\em Sets the colour of {\ttfamily node} to be {\ttfamily colour} in {\ttfamily graph}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ColouredGraph_8h_a1d06164335955ff16b7fe75a625369a3}{cg\+\_\+create\+\_\+dot}} (\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Writes a dot file named \texorpdfstring{$<$}{<}{\ttfamily name\texorpdfstring{$>$}{>}}.dot representing {\ttfamily graph} with partition information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to a graph with colours coded as an integer. The colours themselves are not part of the structure, only the fact they are same or different matters. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle (\href{mailto:vincent.penelle@u-bordeaux.fr}{\texttt{ vincent.\+penelle@u-\/bordeaux.\+fr}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/09-\/20
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons. 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ColouredGraph_8h_a1d06164335955ff16b7fe75a625369a3}\label{ColouredGraph_8h_a1d06164335955ff16b7fe75a625369a3}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_create\_dot@{cg\_create\_dot}}
+\index{cg\_create\_dot@{cg\_create\_dot}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_create\_dot()}{cg\_create\_dot()}}
+{\footnotesize\ttfamily void cg\+\_\+create\+\_\+dot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Writes a dot file named \texorpdfstring{$<$}{<}{\ttfamily name\texorpdfstring{$>$}{>}}.dot representing {\ttfamily graph} with partition information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em name} & A name of file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ColouredGraph_8h_ad9e641721583b2a4ecb48ee061a2e674}\label{ColouredGraph_8h_ad9e641721583b2a4ecb48ee061a2e674}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_delete@{cg\_delete}}
+\index{cg\_delete@{cg\_delete}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_delete()}{cg\_delete()}}
+{\footnotesize\ttfamily void cg\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Deallocates memory used by a {\ttfamily graph} (what is allocated by rg\+\_\+initialize). Warning\+: does NOT deallocate the \mbox{\hyperlink{structGraph}{Graph}} inside the {\ttfamily graph}. The \mbox{\hyperlink{structGraph}{Graph}} must be deallocated with adequate function from \mbox{\hyperlink{Graph_8h}{Graph.\+h}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ColouredGraph_8h_ac3ec3ff3de10f48059df16f223f7b7c7}\label{ColouredGraph_8h_ac3ec3ff3de10f48059df16f223f7b7c7}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_get\_node\_colour@{cg\_get\_node\_colour}}
+\index{cg\_get\_node\_colour@{cg\_get\_node\_colour}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_get\_node\_colour()}{cg\_get\_node\_colour()}}
+{\footnotesize\ttfamily int cg\+\_\+get\+\_\+node\+\_\+colour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{node }\end{DoxyParamCaption})}
+
+
+
+Gets the color of {\ttfamily node} in {\ttfamily graph}. If the color is not set, returns -\/1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em node} & A node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Its color. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ColouredGraph_8h_a9721546f47644699a8e1f04b5c5ae1bf}\label{ColouredGraph_8h_a9721546f47644699a8e1f04b5c5ae1bf}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_get\_node\_name@{cg\_get\_node\_name}}
+\index{cg\_get\_node\_name@{cg\_get\_node\_name}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_get\_node\_name()}{cg\_get\_node\_name()}}
+{\footnotesize\ttfamily char $\ast$ cg\+\_\+get\+\_\+node\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{node }\end{DoxyParamCaption})}
+
+
+
+Gets the name of {\ttfamily node} in {\ttfamily graph}. The name is what appears in the .dot file, while its number is local to this program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em node} & A node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Its name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ColouredGraph_8h_a40a4e29fabf1effa7a0805dda8b6516a}\label{ColouredGraph_8h_a40a4e29fabf1effa7a0805dda8b6516a}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_get\_num\_edges@{cg\_get\_num\_edges}}
+\index{cg\_get\_num\_edges@{cg\_get\_num\_edges}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_get\_num\_edges()}{cg\_get\_num\_edges()}}
+{\footnotesize\ttfamily int cg\+\_\+get\+\_\+num\+\_\+edges (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Returns the number of edges of {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Its number of edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ColouredGraph_8h_a183a15251f120550bcf5770ff104694e}\label{ColouredGraph_8h_a183a15251f120550bcf5770ff104694e}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_get\_num\_nodes@{cg\_get\_num\_nodes}}
+\index{cg\_get\_num\_nodes@{cg\_get\_num\_nodes}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_get\_num\_nodes()}{cg\_get\_num\_nodes()}}
+{\footnotesize\ttfamily int cg\+\_\+get\+\_\+num\+\_\+nodes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Returns the number of nodes of {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Its number of nodes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ColouredGraph_8h_aaa69dbb12a755496affcf713f802d87b}\label{ColouredGraph_8h_aaa69dbb12a755496affcf713f802d87b}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_initialize@{cg\_initialize}}
+\index{cg\_initialize@{cg\_initialize}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_initialize()}{cg\_initialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} cg\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGraph}{Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Initializes a Coloured\+Graph from a \mbox{\hyperlink{structGraph}{Graph}} for use in the functions. Does not color the graph (for use in colouring problem). The graph is NOT copied (as it is not supposed to be modified). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The \mbox{\hyperlink{structGraph}{Graph}} that is the input of the problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Coloured\+Graph The structure Coloured\+Graph described above. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ColouredGraph_8h_a0fe4516b30d519093fdad79159f2495d}\label{ColouredGraph_8h_a0fe4516b30d519093fdad79159f2495d}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_is\_edge@{cg\_is\_edge}}
+\index{cg\_is\_edge@{cg\_is\_edge}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_is\_edge()}{cg\_is\_edge()}}
+{\footnotesize\ttfamily bool cg\+\_\+is\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{source,  }\item[{int}]{target }\end{DoxyParamCaption})}
+
+
+
+Gets if ({\ttfamily source},{\ttfamily target}) is an edge in {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em source} & A node. \\
+\hline
+{\em target} & A node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if ({\ttfamily source},{\ttfamily target}) is an edge in {\ttfamily graph}. 
+
+false if ({\ttfamily source},{\ttfamily target}) is not an edge in {\ttfamily graph}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ColouredGraph_8h_a39da71fd8614717d7d3391dc97c2a83c}\label{ColouredGraph_8h_a39da71fd8614717d7d3391dc97c2a83c}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_print@{cg\_print}}
+\index{cg\_print@{cg\_print}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_print()}{cg\_print()}}
+{\footnotesize\ttfamily void cg\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Printer function to display information about {\ttfamily graph} in input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ColouredGraph_8h_a70f9bf2c041f5eca48d48fa8b9861524}\label{ColouredGraph_8h_a70f9bf2c041f5eca48d48fa8b9861524}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_print\_colors@{cg\_print\_colors}}
+\index{cg\_print\_colors@{cg\_print\_colors}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_print\_colors()}{cg\_print\_colors()}}
+{\footnotesize\ttfamily void cg\+\_\+print\+\_\+colors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph }\end{DoxyParamCaption})}
+
+
+
+Printer function to display the colors of nodes in {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ColouredGraph_8h_a3c8648b05f1b7c3474c50f1ea9172081}\label{ColouredGraph_8h_a3c8648b05f1b7c3474c50f1ea9172081}} 
+\index{ColouredGraph.h@{ColouredGraph.h}!cg\_set\_node\_colour@{cg\_set\_node\_colour}}
+\index{cg\_set\_node\_colour@{cg\_set\_node\_colour}!ColouredGraph.h@{ColouredGraph.h}}
+\doxysubsubsection{\texorpdfstring{cg\_set\_node\_colour()}{cg\_set\_node\_colour()}}
+{\footnotesize\ttfamily void cg\+\_\+set\+\_\+node\+\_\+colour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{node,  }\item[{int}]{colour }\end{DoxyParamCaption})}
+
+
+
+Sets the colour of {\ttfamily node} to be {\ttfamily colour} in {\ttfamily graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em node} & A node. \\
+\hline
+{\em colour} & A colour. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,95 @@
+@font-face {
+    font-family: mlp;
+    src: url("./resources/MLP.ttf");
+}
+
+body {
+    background-image: url("./resources/background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: mlp;
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
+    color: #f163d3;
+}
+
+canvas{
+    background-color: #a5a5a5;
+    border: solid 4px #000000;
+    border-radius: 5px;
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    background-color: #fab7ec;
+    color: #a508bd;
+    border: solid 3px #a508bd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.buttons button:last-child {
+    margin-right: 0;
+}
+
+.buttons button:hover {
+    background-color: #f163d3;
+    color: #fab7ec;
+}
+
+#won {
+    
+    display: none;
+}
+
+.display {
+    margin: 0 auto;
+    display: block !important;
+}
+input {
+    vertical-align: middle;
+    width: 40px; /* Largeur du carré */
+    height: 40px; /* Hauteur du carré */
+    background-color: #fff; /* Couleur de fond */
+    border: 1px solid #ccc; /* Bordure */
+    cursor: pointer; /* Curseur */
+}
+
+/* Styles pour la case à cocher cachée */
+.checkbox-square input[type="checkbox"] {
+    display: none; /* Cacher la case à cocher par défaut */
+}
+
+/* Styles pour la case cochée */
+.checkbox-square input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: "\2713"; /* Symbole de coche (unicode) */
+    font-size: 16px; /* Taille de la police */
+    color: #000; /* Couleur de la coche */
+    text-align: center; /* Alignement du texte */
+    line-height: 20px; /* Hauteur de ligne */
+}
+
+label {
+    display: block;
+    padding-right: 10px;
+    padding-left: 22px;
+    text-indent: -22px;
+  }
+
+ label span {
+    vertical-align: middle;
+ } 

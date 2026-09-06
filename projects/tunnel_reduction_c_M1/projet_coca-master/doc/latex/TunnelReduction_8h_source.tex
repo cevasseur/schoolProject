@@ -1,0 +1,44 @@
+\hypertarget{TunnelReduction_8h_source}{}\doxysection{Tunnel\+Reduction.\+h}
+\label{TunnelReduction_8h_source}\index{include/TunnelRouting/TunnelReduction.h@{include/TunnelRouting/TunnelReduction.h}}
+\mbox{\hyperlink{TunnelReduction_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#ifndef TUNNEL\_RED\_H}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define TUNNEL\_RED\_H}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{TunnelNetwork_8h}{TunnelNetwork.h}}"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <z3.h>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{28 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_af7379a42a9054e394d3fc070a6f97462}{tn\_reduction}}(Z3\_context ctx, \textcolor{keyword}{const} \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} length);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} \mbox{\hyperlink{TunnelReduction_8h_ac29ba462813aa79058cba2cdf20b4ef2}{tn\_get\_path\_from\_model}}(Z3\_context ctx, Z3\_model model, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} bound, \mbox{\hyperlink{structtn__step}{tn\_step}} *path);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{50 \textcolor{keywordtype}{void} \mbox{\hyperlink{TunnelReduction_8h_a07d3e83557e2bf97e80230a74375b838}{tn\_print\_model}}(Z3\_context ctx, Z3\_model model, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} bound);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{61 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_a9faa71cc956357912bd652e6ce9caf8f}{pile\_p1}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} l, \textcolor{keywordtype}{int} hmax);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{73 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_aa8fe11aa5db417966fd43b8251d7da62}{B}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} p);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{86 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_a88afb06838455c8fb0a383c58658de89}{A}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} hmax, \textcolor{keywordtype}{int} n, \textcolor{keywordtype}{int} p);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{97 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_ae3fcc4ebc2c6efa97995ede0710c4589}{pile\_p2}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} l, \textcolor{keywordtype}{int} hmax);}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{108 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_a0952ef6811f7b9700dae2b4b5a4ac7aa}{start\_end\_condition}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} hmax, \textcolor{keywordtype}{int} l);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{119 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_a932e5ec1558c0e2188d4d6eee7d7dfb8}{simple\_path}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} hmax, \textcolor{keywordtype}{int} l);}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{130 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_ad366a37c7a8f98e81002a9185acbde45}{My\_At\_Most}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} hmax, \textcolor{keywordtype}{int} l);}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{143 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_acb47123e24d539b375fd442adb82328d}{valid\_path}}(Z3\_context ctx, \mbox{\hyperlink{TunnelNetwork_8h_a0cb5a6f37b616266dbccd76aa43e89d1}{TunnelNetwork}} network, \textcolor{keywordtype}{int} node, \textcolor{keywordtype}{int} pos, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} bound);}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{154 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_a20c734ceb386dd4c98ebb4d806c4cf1a}{equivalent}}(Z3\_context ctx, \textcolor{keywordtype}{int} pos, \textcolor{keywordtype}{int} h);}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{167 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_ae28c6d439e62d62db7a8621b9cfa1c3e}{transmitting}}(Z3\_context ctx, \textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} pos, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} next, \textcolor{keywordtype}{int} current);}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{182 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_a3be5884a132c7f6ac75e30751cfcd38d}{pushing}}(Z3\_context ctx, \textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b, \textcolor{keywordtype}{int} pos, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} next, \textcolor{keywordtype}{int} bound, \textcolor{keywordtype}{int} current);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{196 Z3\_ast \mbox{\hyperlink{TunnelReduction_8h_a7ceddebb8bb332139c4959dd3173af44}{popping}}(Z3\_context ctx, \textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b, \textcolor{keywordtype}{int} pos, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} next, \textcolor{keywordtype}{int} current);}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

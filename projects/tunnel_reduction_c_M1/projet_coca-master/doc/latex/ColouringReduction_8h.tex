@@ -1,0 +1,116 @@
+\hypertarget{ColouringReduction_8h}{}\doxysection{include/\+Colouring\+Problem/\+Colouring\+Reduction.h File Reference}
+\label{ColouringReduction_8h}\index{include/ColouringProblem/ColouringReduction.h@{include/ColouringProblem/ColouringReduction.h}}
+
+
+An implementation of the colouring problem seen in exercise session. Converts a graph g to a formula true if and only if it is possible to colour it with a fixed number of colours such that neighbouring node have different colours. Provides functions to generate the formula and the necessary variables, alongside function to decode a solution from a model of the formula.  
+
+
+{\ttfamily \#include \char`\"{}Graph.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Coloured\+Graph.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$z3.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Z3\+\_\+ast \mbox{\hyperlink{ColouringReduction_8h_ae53dfdb6aa8f457c275d06fc8764aa40}{colouring\+\_\+reduction}} (Z3\+\_\+context ctx, const \mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int num\+\_\+colours)
+\begin{DoxyCompactList}\small\item\em Generates a propositional formula satisfiable if and only if there is a partition which satisfies every player and all components are connected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ColouringReduction_8h_a6bd3fe727056592f8439e72dd47c911b}{colour\+\_\+graph\+\_\+from\+\_\+model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, \mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int num\+\_\+colours)
+\begin{DoxyCompactList}\small\item\em Colours {\ttfamily graph} according to {\ttfamily model}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ColouringReduction_8h_af18bcd52fd99e2f65e0f2e388f078c76}{colouring\+\_\+print\+\_\+model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, \mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}} graph, int num\+\_\+colours)
+\begin{DoxyCompactList}\small\item\em Prints the values of the variables in {\ttfamily model}. {\ttfamily graph} and {\ttfamily num\+\_\+colours} are used to determine which values to print. {\ttfamily model} should have been obtained through the satisfaction of a formula obtained with colouring\+\_\+reduction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An implementation of the colouring problem seen in exercise session. Converts a graph g to a formula true if and only if it is possible to colour it with a fixed number of colours such that neighbouring node have different colours. Provides functions to generate the formula and the necessary variables, alongside function to decode a solution from a model of the formula. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle (\href{mailto:vincent.penelle@u-bordeaux.fr}{\texttt{ vincent.\+penelle@u-\/bordeaux.\+fr}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/09-\/22
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ColouringReduction_8h_a6bd3fe727056592f8439e72dd47c911b}\label{ColouringReduction_8h_a6bd3fe727056592f8439e72dd47c911b}} 
+\index{ColouringReduction.h@{ColouringReduction.h}!colour\_graph\_from\_model@{colour\_graph\_from\_model}}
+\index{colour\_graph\_from\_model@{colour\_graph\_from\_model}!ColouringReduction.h@{ColouringReduction.h}}
+\doxysubsubsection{\texorpdfstring{colour\_graph\_from\_model()}{colour\_graph\_from\_model()}}
+{\footnotesize\ttfamily void colour\+\_\+graph\+\_\+from\+\_\+model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{num\+\_\+colours }\end{DoxyParamCaption})}
+
+
+
+Colours {\ttfamily graph} according to {\ttfamily model}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em model} & A variable assignment. \\
+\hline
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em num\+\_\+colours} & The number of expected colours. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily model} must be a valid model which has a truth value for each variable representing a pair colour, node. 
+
+{\ttfamily graph} must be the Coloured\+Graph used to obtain {\ttfamily model}. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{ColouringReduction_8h_af18bcd52fd99e2f65e0f2e388f078c76}\label{ColouringReduction_8h_af18bcd52fd99e2f65e0f2e388f078c76}} 
+\index{ColouringReduction.h@{ColouringReduction.h}!colouring\_print\_model@{colouring\_print\_model}}
+\index{colouring\_print\_model@{colouring\_print\_model}!ColouringReduction.h@{ColouringReduction.h}}
+\doxysubsubsection{\texorpdfstring{colouring\_print\_model()}{colouring\_print\_model()}}
+{\footnotesize\ttfamily void colouring\+\_\+print\+\_\+model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{\mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{num\+\_\+colours }\end{DoxyParamCaption})}
+
+
+
+Prints the values of the variables in {\ttfamily model}. {\ttfamily graph} and {\ttfamily num\+\_\+colours} are used to determine which values to print. {\ttfamily model} should have been obtained through the satisfaction of a formula obtained with colouring\+\_\+reduction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em model} & A model. \\
+\hline
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em num\+\_\+colours} & The number of expected colours. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily model} must be a valid model which has a truth value for each variable representing a pair colour, node. 
+
+{\ttfamily graph} must be the Coloured\+Graph used to obtain {\ttfamily model} 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{ColouringReduction_8h_ae53dfdb6aa8f457c275d06fc8764aa40}\label{ColouringReduction_8h_ae53dfdb6aa8f457c275d06fc8764aa40}} 
+\index{ColouringReduction.h@{ColouringReduction.h}!colouring\_reduction@{colouring\_reduction}}
+\index{colouring\_reduction@{colouring\_reduction}!ColouringReduction.h@{ColouringReduction.h}}
+\doxysubsubsection{\texorpdfstring{colouring\_reduction()}{colouring\_reduction()}}
+{\footnotesize\ttfamily Z3\+\_\+ast colouring\+\_\+reduction (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{const \mbox{\hyperlink{ColouredGraph_8h_ab918d855ee369532a9e063db8a1bca54}{Coloured\+Graph}}}]{graph,  }\item[{int}]{num\+\_\+colours }\end{DoxyParamCaption})}
+
+
+
+Generates a propositional formula satisfiable if and only if there is a partition which satisfies every player and all components are connected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em graph} & A Coloured\+Graph. \\
+\hline
+{\em num\+\_\+colours} & The number of colours available for colouring the graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast The formula. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily graph} must be initialized. 
+\end{DoxyPrecond}

@@ -1,0 +1,214 @@
+\hypertarget{Z3Tools_8h}{}\doxysection{include/main/\+Z3\+Tools.h File Reference}
+\label{Z3Tools_8h}\index{include/main/Z3Tools.h@{include/main/Z3Tools.h}}
+
+
+This file contains functions to easily and transparently manipulate the Z3 SMT solver as a SAT solver without delving too much in the documentation. Note that most functions ask for a Z3\+\_\+context. This is needed by Z3, but in this case, simply create a context at the beginning and pass it as an argument every time needed.  
+
+
+{\ttfamily \#include $<$z3.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Z3\+\_\+context \mbox{\hyperlink{Z3Tools_8h_aaf063ddf7bfa7986a50b98591519c440}{make\+\_\+context}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a basic Z3 context with basic config (sufficient for this project). Must be freed at end of program with Z3\+\_\+del\+\_\+context. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{Z3Tools_8h_a397d6e03e2538ff0df36aad6e02030ae}{mk\+\_\+bool\+\_\+var}} (Z3\+\_\+context ctx, const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Creates a formula containing a single variable whose name is given in parameter. Example mk\+\_\+bool\+\_\+var(ctx,\char`\"{}toto\char`\"{}) will create the formula «toto». Each call with same name will produce the same formula (so it can be used to have the same variable in different formulae.) \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{Z3Tools_8h_a59777aad6108658c0d6ae97d7f779b0f}{at\+\_\+most\+\_\+formula}} (Z3\+\_\+context ctx, Z3\+\_\+ast $\ast$formulae, int size)
+\begin{DoxyCompactList}\small\item\em Generates a formula stating that at most one of the formulae from {\ttfamily formulae} is true. \end{DoxyCompactList}\item 
+Z3\+\_\+ast \mbox{\hyperlink{Z3Tools_8h_a9ae87e2debe9a43dd02485cbc1592ac0}{unique\+Formula}} (Z3\+\_\+context ctx, Z3\+\_\+ast $\ast$formulae, int size)
+\begin{DoxyCompactList}\small\item\em Generates a formula stating that exactly one of the formulae from {\ttfamily formulae} is true. \end{DoxyCompactList}\item 
+Z3\+\_\+lbool \mbox{\hyperlink{Z3Tools_8h_a9e8e16c2de950d843c7176525f2f9c2f}{is\+\_\+formula\+\_\+sat}} (Z3\+\_\+context ctx, Z3\+\_\+ast formula)
+\begin{DoxyCompactList}\small\item\em Tells if a formula is satisfiable, unsatisfiable, or cannot be decided. \end{DoxyCompactList}\item 
+Z3\+\_\+model \mbox{\hyperlink{Z3Tools_8h_a22198d664538618eafa0529472dc0403}{get\+\_\+model\+\_\+from\+\_\+sat\+\_\+formula}} (Z3\+\_\+context ctx, Z3\+\_\+ast formula)
+\begin{DoxyCompactList}\small\item\em Returns an assignment of variables satisfying the formula if it is satisfiable. Exits the program if the formula is unsatisfiable. \end{DoxyCompactList}\item 
+Z3\+\_\+lbool \mbox{\hyperlink{Z3Tools_8h_a1075cfdda6682c0f8d3a93e6db931e11}{solve\+\_\+formula}} (Z3\+\_\+context ctx, Z3\+\_\+ast formula, Z3\+\_\+model $\ast$model)
+\begin{DoxyCompactList}\small\item\em Checks if a formula is satisfiable, unsatisfiable, or cannot be decided. If it is decidable, puts a model in the formula in model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{Z3Tools_8h_a6772a975ca06457741fa1b6a82b34613}{value\+\_\+of\+\_\+var\+\_\+in\+\_\+model}} (Z3\+\_\+context ctx, Z3\+\_\+model model, Z3\+\_\+ast variable)
+\begin{DoxyCompactList}\small\item\em Returns the truth value of the formula {\ttfamily variable} in the variable assignment {\ttfamily model}. Very usefull if {\ttfamily variable} is a formula containing a single variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains functions to easily and transparently manipulate the Z3 SMT solver as a SAT solver without delving too much in the documentation. Note that most functions ask for a Z3\+\_\+context. This is needed by Z3, but in this case, simply create a context at the beginning and pass it as an argument every time needed. 
+
+\begin{DoxyAuthor}{Author}
+Vincent Penelle (\href{mailto:vincent.penelle@u-bordeaux.fr}{\texttt{ vincent.\+penelle@u-\/bordeaux.\+fr}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2019-\/08-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Creative Commons 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Z3Tools_8h_a59777aad6108658c0d6ae97d7f779b0f}\label{Z3Tools_8h_a59777aad6108658c0d6ae97d7f779b0f}} 
+\index{Z3Tools.h@{Z3Tools.h}!at\_most\_formula@{at\_most\_formula}}
+\index{at\_most\_formula@{at\_most\_formula}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{at\_most\_formula()}{at\_most\_formula()}}
+{\footnotesize\ttfamily Z3\+\_\+ast at\+\_\+most\+\_\+formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+ast $\ast$}]{formulae,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Generates a formula stating that at most one of the formulae from {\ttfamily formulae} is true. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em formulae} & The formulae. \\
+\hline
+{\em size} & The number of formulae. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast The obtained formula. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Z3Tools_8h_a22198d664538618eafa0529472dc0403}\label{Z3Tools_8h_a22198d664538618eafa0529472dc0403}} 
+\index{Z3Tools.h@{Z3Tools.h}!get\_model\_from\_sat\_formula@{get\_model\_from\_sat\_formula}}
+\index{get\_model\_from\_sat\_formula@{get\_model\_from\_sat\_formula}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{get\_model\_from\_sat\_formula()}{get\_model\_from\_sat\_formula()}}
+{\footnotesize\ttfamily Z3\+\_\+model get\+\_\+model\+\_\+from\+\_\+sat\+\_\+formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+ast}]{formula }\end{DoxyParamCaption})}
+
+
+
+Returns an assignment of variables satisfying the formula if it is satisfiable. Exits the program if the formula is unsatisfiable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The context of the solver. \\
+\hline
+{\em formula} & The formula to get a model from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+model An assignment of variable satisfying {\ttfamily formula}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Z3Tools_8h_a9e8e16c2de950d843c7176525f2f9c2f}\label{Z3Tools_8h_a9e8e16c2de950d843c7176525f2f9c2f}} 
+\index{Z3Tools.h@{Z3Tools.h}!is\_formula\_sat@{is\_formula\_sat}}
+\index{is\_formula\_sat@{is\_formula\_sat}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{is\_formula\_sat()}{is\_formula\_sat()}}
+{\footnotesize\ttfamily Z3\+\_\+lbool is\+\_\+formula\+\_\+sat (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+ast}]{formula }\end{DoxyParamCaption})}
+
+
+
+Tells if a formula is satisfiable, unsatisfiable, or cannot be decided. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The context of the solver. \\
+\hline
+{\em formula} & The formula to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+lbool Z3\+\_\+\+L\+\_\+\+FALSE if {\ttfamily formula} is unsatisfiable, Z3\+\_\+\+L\+\_\+\+TRUE if {\ttfamily formula} is satisfiable and Z3\+\_\+\+L\+\_\+\+UNDEF if the solver cannot decide if {\ttfamily formula} is satisfiable or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Z3Tools_8h_aaf063ddf7bfa7986a50b98591519c440}\label{Z3Tools_8h_aaf063ddf7bfa7986a50b98591519c440}} 
+\index{Z3Tools.h@{Z3Tools.h}!make\_context@{make\_context}}
+\index{make\_context@{make\_context}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{make\_context()}{make\_context()}}
+{\footnotesize\ttfamily Z3\+\_\+context make\+\_\+context (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Creates a basic Z3 context with basic config (sufficient for this project). Must be freed at end of program with Z3\+\_\+del\+\_\+context. 
+
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+context The created context 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Z3Tools_8h_a397d6e03e2538ff0df36aad6e02030ae}\label{Z3Tools_8h_a397d6e03e2538ff0df36aad6e02030ae}} 
+\index{Z3Tools.h@{Z3Tools.h}!mk\_bool\_var@{mk\_bool\_var}}
+\index{mk\_bool\_var@{mk\_bool\_var}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{mk\_bool\_var()}{mk\_bool\_var()}}
+{\footnotesize\ttfamily Z3\+\_\+ast mk\+\_\+bool\+\_\+var (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Creates a formula containing a single variable whose name is given in parameter. Example mk\+\_\+bool\+\_\+var(ctx,\char`\"{}toto\char`\"{}) will create the formula «toto». Each call with same name will produce the same formula (so it can be used to have the same variable in different formulae.) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The context of the solver. \\
+\hline
+{\em name} & The name the variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast The formula consisting in the variable. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Z3Tools_8h_a1075cfdda6682c0f8d3a93e6db931e11}\label{Z3Tools_8h_a1075cfdda6682c0f8d3a93e6db931e11}} 
+\index{Z3Tools.h@{Z3Tools.h}!solve\_formula@{solve\_formula}}
+\index{solve\_formula@{solve\_formula}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{solve\_formula()}{solve\_formula()}}
+{\footnotesize\ttfamily Z3\+\_\+lbool solve\+\_\+formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+ast}]{formula,  }\item[{Z3\+\_\+model $\ast$}]{model }\end{DoxyParamCaption})}
+
+
+
+Checks if a formula is satisfiable, unsatisfiable, or cannot be decided. If it is decidable, puts a model in the formula in model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The context of the solver. \\
+\hline
+{\em formula} & The formula to check. \\
+\hline
+{\em model} & A pointer towards a model. Will contain a model of {\ttfamily formula} if it is satisfiable (otherwise, will not be modified). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+lbool Z3\+\_\+\+L\+\_\+\+FALSE if {\ttfamily formula} is unsatisfiable, Z3\+\_\+\+L\+\_\+\+TRUE if {\ttfamily formula} is satisfiable and Z3\+\_\+\+L\+\_\+\+UNDEF if the solver cannot decide if {\ttfamily formula} is satisfiable or not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Z3Tools_8h_a9ae87e2debe9a43dd02485cbc1592ac0}\label{Z3Tools_8h_a9ae87e2debe9a43dd02485cbc1592ac0}} 
+\index{Z3Tools.h@{Z3Tools.h}!uniqueFormula@{uniqueFormula}}
+\index{uniqueFormula@{uniqueFormula}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{uniqueFormula()}{uniqueFormula()}}
+{\footnotesize\ttfamily Z3\+\_\+ast unique\+Formula (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+ast $\ast$}]{formulae,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Generates a formula stating that exactly one of the formulae from {\ttfamily formulae} is true. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The solver context. \\
+\hline
+{\em formulae} & The formulae. \\
+\hline
+{\em size} & The number of formulae. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Z3\+\_\+ast The obtained formula. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Z3Tools_8h_a6772a975ca06457741fa1b6a82b34613}\label{Z3Tools_8h_a6772a975ca06457741fa1b6a82b34613}} 
+\index{Z3Tools.h@{Z3Tools.h}!value\_of\_var\_in\_model@{value\_of\_var\_in\_model}}
+\index{value\_of\_var\_in\_model@{value\_of\_var\_in\_model}!Z3Tools.h@{Z3Tools.h}}
+\doxysubsubsection{\texorpdfstring{value\_of\_var\_in\_model()}{value\_of\_var\_in\_model()}}
+{\footnotesize\ttfamily bool value\+\_\+of\+\_\+var\+\_\+in\+\_\+model (\begin{DoxyParamCaption}\item[{Z3\+\_\+context}]{ctx,  }\item[{Z3\+\_\+model}]{model,  }\item[{Z3\+\_\+ast}]{variable }\end{DoxyParamCaption})}
+
+
+
+Returns the truth value of the formula {\ttfamily variable} in the variable assignment {\ttfamily model}. Very usefull if {\ttfamily variable} is a formula containing a single variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & The context of the solver. \\
+\hline
+{\em model} & A variable assignment. \\
+\hline
+{\em variable} & A formula of which we want the truth value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if {\ttfamily variable} is true in {\ttfamily model} 
+
+false otherwise. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily model} must be a valid model. 
+\end{DoxyPrecond}

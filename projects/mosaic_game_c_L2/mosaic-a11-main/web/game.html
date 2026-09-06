@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ********************* html ********************* -->
+    <h1>My Little Mosaic</h1>
+    
+    <pre id="result"></pre>
+    <canvas id='mycanvas'></canvas>
+    <div class="buttons">
+        <button id="undo">Undo</button>
+        <button id="redo">Redo</button>
+        <button id="solve">Solve</button>
+        <button id="restart">Restart</button>
+        <button id="random">Generate random 5x5</button>
+        <label><input id="checkbox" type="checkbox"> <span>Wrapping</span></label>
+    </div>
+    <img id="won" src="./resources/won.png" alt="img" style="width: 550px; height: 200px;">
+
+    <!-- ********************* script ********************* -->
+
+    <script src="game.js"></script>
+    <script src="demo.js"> </script>
+
+</body>
+
+</html>
